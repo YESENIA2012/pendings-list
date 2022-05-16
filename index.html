@@ -17,16 +17,16 @@
             <a href="#modalContainer" id="openModal"><i id="iconOpenModal" class="icon fa-solid fa-plus"></i></a>
             <div id="modalContainer" class="modalContainer">
                 <div class="work">
-                    <a href="#openModalTarea" class="homeworkMoldal">Homework</a>
+                    <a href="#createHomework" id="openHomework" class="homeworkMoldal">Homework</a>
                 </div>
             </div>
-            <!-- <div id="contenedorModalHomework">
-                <div id="openModalTarea">
-                    <textarea name="homework" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
-                    <a href="#close" title="close" class="close">x</a>
-                </div>
-            </div> -->
         </header>
+        <div id="createHomework" class="containerHomework">
+            <div id="modalHomework" class="modalHome">
+                <textarea name="homework" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
+                <a href="#close" id="closeButton" class="close">x</a>
+            </div>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>
