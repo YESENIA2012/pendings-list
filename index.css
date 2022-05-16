@@ -95,32 +95,40 @@ i.fa-house:hover{
     background-color: rgba(163,172,182,.2);
 }
 
-#contenedorModalHomework{
+.containerHomework{
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    height: 650px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    pointer-events: none;
+    opacity: 0;
+    background-color: white;
 }
 
-#openModalTarea{
+.show2{
+    pointer-events: unset;
+    opacity: 1;
+}
+
+.modalHome{
     display: grid;
     grid-template-columns: 1fr 30px;
     grid-column-gap: 20px;
-    background-color: aliceblue;
-    height: 720px;
-    width: 800px;
-    margin-left: 325px;
 }
 
 textarea{
     width: 90%;
    height: 30px;
    border: none;
-   padding-top: 10px;
-   padding-left: 25px;
    font-size: 20px;
    font-family: inherit;
    color: rgba(0,0,0,.9);
+   margin-left: 20px;
+   margin-top: 10px;
 }
 
 textarea:hover{
@@ -134,4 +142,9 @@ a{
 .close{
     font-size: 25px;
     color: black;
+    font-weight: normal;
+}
+
+.close:hover{
+    color: rgba(68,136,255,1);
 }
