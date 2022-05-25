@@ -10,23 +10,38 @@
     <body>
         <header>
             <nav>
-                <a href="" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
-                <a href="" class="iconos"><i class="icon fa-solid fa-envelope"></i></a>
-                <a href="" class="iconos"><i class="icon fa-solid fa-house"></i></a>
+                <a href="#sectioHomework" id="openSectionHomework" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
+<!--                 <a href="" class="iconos"><i class="icon fa-solid fa-envelope"></i></a>
+                <a href="" class="iconos"><i class="icon fa-solid fa-house"></i></a> -->
             </nav>
-            <a href="#modalContainer" id="openModal"><i id="iconOpenModal" class="icon fa-solid fa-plus"></i></a>
+            <a href="#modalContainer"><i id="iconOpenModal" class="icon fa-solid fa-plus"></i></a>
             <div id="modalContainer" class="modalContainer">
                 <div class="work">
                     <a href="#createHomework" id="openHomework" class="homeworkMoldal">Homework</a>
                 </div>
             </div>
         </header>
-        <div id="createHomework" class="containerHomework">
-            <div id="modalHomework" class="modalHome">
-                <textarea name="homework" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
+        <div id="formulario" class="containerForm">
+            <form id="modalHomework" class="modalHome">
+                <textarea name="homework" id="activity" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
                 <a href="#close" id="closeButton" class="close">x</a>
-            </div>
+                <button type="submit" class="boton">Enviar</button>
+            </form>
         </div>
+        <section id="sectioHomework"class="sectionWorks">
+            <a href="#homeworkList" id="item_1" class="list">Homework List</a>
+            <a href="#taskProgress" id="item_2" class="list">Task Progress</a>
+        </section>
+        <section id="homeworkList" class="homeworkListC">
+            <h1 class="title">My tasks</h1>
+            <div id="taskList" class="taskListC"></div>
+        </section>
+        <section id="taskProgress" class="taskProgressC">
+            <div id="newTask" class="newTaskC">New</div>
+            <div>In Progress</div>
+            <div>Completed</div>
+            <div>On Hold</div>
+        </section>
         <script src="index.js"></script>
     </body>
 </html>
