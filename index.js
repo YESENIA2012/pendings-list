@@ -7,11 +7,9 @@ const formulario = document.getElementById("formulario");
 const closeButton = document.getElementById("closeButton");
 const openSection = document.getElementById("openSectionHomework");
 const sectionHomework = document.getElementById("sectioHomework");
-const item_1 = document.getElementById("item_1");
 const homeworkList = document.getElementById("homeworkList");
 const item_2 = document.getElementById("item_2");
 const taskProgress = document.getElementById("taskProgress");
-const taskList = document.getElementById("taskList");
 const newTask = document.getElementById("newTask");
 let arrayActivitys = [];
 
@@ -32,7 +30,7 @@ const saveTask = (activity) => {
 };
 
 const addTask = () => {
-  taskList.innerHTML = " ";
+  newTask.innerHTML = " ";
   arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
 
   if (arrayActivitys === null) {
@@ -40,13 +38,16 @@ const addTask = () => {
   } else {
     arrayActivitys.forEach((element) => {
       const tareas = document.createElement("p");
-      let attrOfP = document.createAttribute("class");
-      attrOfP.value = "listTask_sec1";
-      tareas.setAttributeNode(attrOfP);
       const textTarea = document.createTextNode(element.activity);
       tareas.appendChild(textTarea);
-      taskList.appendChild(tareas);
       newTask.appendChild(tareas);
+      const icon = document.createElement("span");
+      const iconClass = document.createAttribute("class");
+      iconClass.value = "icon2 material-symbols-outlined";
+      icon.setAttributeNode(iconClass);
+      const iconTest = document.createTextNode("more_vert");
+      icon.appendChild(iconTest);
+      tareas.appendChild(icon);
     });
   }
 };
@@ -77,31 +78,9 @@ openSection.addEventListener("click", () => {
   sectionHomework.classList.add("show3");
 });
 
-item_1.addEventListener("click", () => {
-  sectionHomework.classList.remove("show3");
-  homeworkList.classList.add("show4");
-});
-
 item_2.addEventListener("click", () => {
   sectionHomework.classList.remove("show3");
   taskProgress.classList.add("show5");
 });
 
 document.addEventListener("DOMContentLoaded", addTask);
-
-/* let getData = function () {
-  const nameHomeWork = document.getElementById("activity").value;
-  localStorage.setItem("namehomework", nameHomeWork);
-
-  const almacen = localStorage.getItem("namehomework");
-  const tareas = document.createElement("p");
-  let attrOfP = document.createAttribute("class");
-  attrOfP.value = "listTask_sec1";
-  tareas.setAttributeNode(attrOfP);
-  const textTarea = document.createTextNode(almacen);
-  tareas.appendChild(textTarea);
-  taskList.appendChild(tareas);
-
-  document.getElementById("listHomework_c").value =
-    "Enter the name of the new task";
-}; */
