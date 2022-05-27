@@ -12,13 +12,16 @@ const item_2 = document.getElementById("item_2");
 const taskProgress = document.getElementById("taskProgress");
 const newTask = document.getElementById("newTask");
 let arrayActivitys = [];
+const nuevaTarea = document.getElementById("state1");
+const inProgress = document.getElementById("state2");
+const completed = document.getElementById("state3");
+const onHold = document.getElementById("state4");
 
 //Functions
 
 const createActivity = (activity) => {
   let item = {
     activity: activity,
-    estado: false,
   };
   arrayActivitys.push(item);
   return item;
@@ -39,18 +42,50 @@ const addTask = () => {
     arrayActivitys.forEach((element) => {
       const tareas = document.createElement("p");
       const textTarea = document.createTextNode(element.activity);
+      tareas.draggable = "true";
       tareas.appendChild(textTarea);
       newTask.appendChild(tareas);
-      const icon = document.createElement("span");
-      const iconClass = document.createAttribute("class");
-      iconClass.value = "icon2 material-symbols-outlined";
-      icon.setAttributeNode(iconClass);
-      const iconTest = document.createTextNode("more_vert");
-      icon.appendChild(iconTest);
-      tareas.appendChild(icon);
+      dragEvent(tareas);
+      dragToElement(nuevaTarea, tareas);
+      dragToElement(inProgress, tareas);
+      dragToElement(completed, tareas);
+      dragToElement(onHold, tareas);
+      addresponsability(tareas, inProgress);
+      addresponsability(tareas, completed);
+      addresponsability(tareas, onHold);
     });
   }
 };
+
+function dragEvent(tareas) {
+  tareas.addEventListener("dragstart", (e) => {
+    /* console.log(e.target.innerHTML); */
+  });
+
+  tareas.addEventListener("dragend", () => {});
+
+  tareas.addEventListener("drag", () => {});
+}
+
+function dragToElement(inProgress, tareas) {
+  inProgress.addEventListener("dragenter", (e) => {});
+
+  inProgress.addEventListener("dragleave", (e) => {});
+  inProgress.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+}
+
+let evento = null;
+function addresponsability(tareas, inProgress) {
+  tareas.addEventListener("dragstart", function (e) {
+    evento = e.target;
+  });
+
+  inProgress.addEventListener("drop", () => {
+    inProgress.appendChild(evento);
+  });
+}
 
 //EventListener
 openModal.addEventListener("click", () => {
