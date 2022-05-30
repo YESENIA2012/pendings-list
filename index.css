@@ -1,8 +1,12 @@
+:root{
+    --color_1: rgba(254,254,255,1)
+}
+
 *{
     margin: 0;
 }
 body{
-    background-color: rgba(254,254,255,1);
+    background-color: var(--color_1);
     display: grid;
     font-family: 'Assistant', sans-serif;
     color: rgba(0, 0, 0, 0.9)
@@ -24,7 +28,7 @@ nav{
 .icon{
     font-size: 20px;
     border-radius: 50%;
-    color: white;
+    color: var(--color_1);
     height: 35px;
     width: 35px;
     text-align: center;
@@ -50,9 +54,7 @@ i.fa-bars:hover{
 i.fa-envelope:hover{
     background-color: rgb(25, 93, 103);
 } 
-i.fa-house:hover{
-    background-color: rgb(25, 93, 103);
-}
+
 
 #openModal{
     margin-left: 180px;
@@ -62,7 +64,7 @@ i.fa-house:hover{
     display: grid;
     position:fixed;
     z-index: 1;
-    background-color: rgba(254,254,255,1);
+    background-color: var(--color_1);
     height: 100px;
     width: 200px;
     left: 1100px;
@@ -175,7 +177,7 @@ a{
 .sectionWorks{
     display: grid;
     position:fixed;
-    background-color: rgba(254,254,255,1);
+    background-color: var(--color_1);
     height: 150px;
     width: 200px;
     left: 50px;
@@ -192,11 +194,54 @@ a{
     z-index: 1;
 }
 
+.welcome{
+    display: grid;
+    grid-template-rows: 100px;
+    position: absolute;
+    margin-top: 55px;
+    height: 100%;
+    width: 100%;
+}
+
+.title_one{
+    margin-top: 200px;
+    font-size: 70px;
+    text-align: center;
+}
+
+.welcom_form{
+    display: grid;
+    width: 400px;
+    margin: auto;
+    height: 100px;
+    
+}
+
+.form-control{
+    background-color: var(--color_1);
+}
+
+.submit-button{
+    background-color: #04454d;
+    color: var(--color_1);
+    margin-top: 3px;
+}
+
+.form-control, .submit-button{
+    border-radius: 0.25rem;
+}
+
+
+
+.submit-button:hover{
+    background-color: rgb(25, 93, 103);
+}
+
 .taskProgressC{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     position:fixed;
-    background-color: rgba(254,254,255,1);
+    background-color: var(--color_1);
     height: 100%;
     width: 1425px;
     margin-top: 70px;
@@ -223,9 +268,14 @@ a{
     font-size: 15px;
 }
 
-p{
-    margin: 26px;
-    border-bottom: 1px solid grey;
+.newTaskC{
+    display: grid;
+    height: 60px;
 }
- 
-/* Acuerdece de quitar las clases de los párrafos */
+
+p{
+    margin: 26px 0 0 26px;
+    border-bottom: 1px solid grey;
+    height: 30px;
+    width: 290px;
+}
