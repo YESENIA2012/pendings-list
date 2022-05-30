@@ -29,22 +29,34 @@
         </div>
         <section id="sectioHomework"class="sectionWorks">
             <a href="#taskProgress" id="item_2" class="list">Task Progress</a>
+            <a href="#welcome" id="item_2" class="list">Welcome Section</a>
+        </section>
+        <section class="welcome">
+            <h1 class="title_one">Welcome</h1>
+            <form class="welcom_form">
+                <label id="name-label" for="name">What's your name ?</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required/>
+                <button type="submit" id="submit" class="submit-button">Submit</button>
+            </form>
         </section>
         <section id="taskProgress" class="taskProgressC">
-            <div class="state">
+            <div id="state1" class="state">
                 <h1 class="title">New</h1>
                 <div id="newTask" class="newTaskC">
                 </div>
             </div>
-            <div class="state">
+            <div id="state2" class="state">
                 <h1 class="title">In Progress</h1>
             </div>
-            <div class="state">
+            <div id="state3" class="state">
                 <h1 class="title">Completed</h1>
             </div>
-            <div class="state">
+            <div id="state4" class="state">
                 <h1 class="title">On Hold</h1>
             </div>
+        </section>
+        <section id="progress">
+
         </section>
         <script src="index.js"></script>
     </body>
