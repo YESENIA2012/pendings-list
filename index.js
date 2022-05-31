@@ -16,6 +16,12 @@ const nuevaTarea = document.getElementById("state1");
 const inProgress = document.getElementById("state2");
 const completed = document.getElementById("state3");
 const onHold = document.getElementById("state4");
+const welcomeSection = document.getElementById("welcomeSection");
+const form_Welcome = document.getElementById("form_Welcome");
+const addName = document.getElementById("addName");
+let myName = " ";
+let item = document.getElementById("item");
+const closeButton2 = document.getElementById("closeButton2");
 
 //Functions
 
@@ -87,7 +93,24 @@ function addresponsability(tareas, inProgress) {
   });
 }
 
+const saveName = (yourName) => {
+  localStorage.setItem("nombre", JSON.stringify(yourName));
+};
+
+const addNameFunc = () => {
+  myName = JSON.parse(localStorage.getItem("nombre"));
+
+  let divWelcome = document.createElement("div");
+  const atributeDiv = document.createAttribute("class");
+  atributeDiv.value = "nameWlcomeC";
+  divWelcome.setAttributeNode(atributeDiv);
+  let textDiv = document.createTextNode(myName);
+  divWelcome.appendChild(textDiv);
+  addName.appendChild(divWelcome);
+};
+
 //EventListener
+
 openModal.addEventListener("click", () => {
   modalContainer.classList.add("show");
 });
@@ -109,13 +132,35 @@ formulario.addEventListener("submit", (e) => {
   document.getElementById("activity").value = "Enter the name of the new task";
 });
 
-openSection.addEventListener("click", () => {
+openSection.addEventListener("click", (e) => {
   sectionHomework.classList.add("show3");
 });
 
 item_2.addEventListener("click", () => {
   sectionHomework.classList.remove("show3");
   taskProgress.classList.add("show5");
+});
+
+form_Welcome.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let yourName = document.getElementById("name").value;
+  saveName(yourName);
+  form_Welcome.classList.add("show6");
+  addNameFunc();
+  addName.classList.add("show7");
+});
+
+item.addEventListener("click", () => {
+  taskProgress.classList.remove("show5");
+  sectionHomework.classList.remove("show3");
+});
+
+closeButton2.addEventListener("click", () => {
+  sectionHomework.classList.remove("show3");
+});
+
+closeButton3.addEventListener("click", () => {
+  modalContainer.classList.remove("show");
 });
 
 document.addEventListener("DOMContentLoaded", addTask);
