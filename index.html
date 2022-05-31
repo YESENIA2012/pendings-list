@@ -13,31 +13,34 @@
             <nav>
                 <a href="#sectioHomework" id="openSectionHomework" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
             </nav>
-            <a href="#modalContainer"><i id="iconOpenModal" class="icon fa-solid fa-plus"></i></a>
+            <a href="#modalContainer"><i id="iconOpenModal" class="icon icon_2 fa-solid fa-plus"></i></a>
             <div id="modalContainer" class="modalContainer">
                 <div class="work">
                     <a href="#createHomework" id="openHomework" class="homeworkMoldal">Homework</a>
+                    <a id="closeButton3" class="close3">x</a>
                 </div>
             </div>
         </header>
         <div id="formulario" class="containerForm">
             <form id="modalHomework" class="modalHome">
                 <textarea name="homework" id="activity" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
-                <a href="#close" id="closeButton" class="close">x</a>
+                <a id="closeButton" class="close">x</a>
                 <button type="submit" class="boton">Enviar</button>
             </form>
         </div>
         <section id="sectioHomework"class="sectionWorks">
             <a href="#taskProgress" id="item_2" class="list">Task Progress</a>
-            <a href="#welcome" id="item_2" class="list">Welcome Section</a>
+            <a href="#welcomeSection" id="item" class="list">Welcome Section</a>
+            <a id="closeButton2" class="close2">x</a>
         </section>
-        <section class="welcome">
+        <section id="welcomeSection" class="welcome">
             <h1 class="title_one">Welcome</h1>
-            <form class="welcom_form">
+            <form id="form_Welcome" class="welcom_form">
                 <label id="name-label" for="name">What's your name ?</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required/>
                 <button type="submit" id="submit" class="submit-button">Submit</button>
             </form>
+            <div id="addName" class="addNameC"></div>
         </section>
         <section id="taskProgress" class="taskProgressC">
             <div id="state1" class="state">
@@ -49,14 +52,11 @@
                 <h1 class="title">In Progress</h1>
             </div>
             <div id="state3" class="state">
-                <h1 class="title">Completed</h1>
-            </div>
-            <div id="state4" class="state">
                 <h1 class="title">On Hold</h1>
             </div>
-        </section>
-        <section id="progress">
-
+            <div id="state4" class="state">
+                <h1 class="title">Completed</h1>
+            </div>
         </section>
         <script src="index.js"></script>
     </body>
