@@ -19,6 +19,7 @@ header{
     height: 56px;
     align-items: center;
 }
+
 nav{
     display: grid;
     grid-template-columns: 40px 40px 40px;
@@ -55,15 +56,12 @@ i.fa-plus:hover{
 i.fa-bars:hover{
     background-color: rgb(25, 93, 103);
 }
+
 i.fa-envelope:hover{
     background-color: rgb(25, 93, 103);
 } 
 
-#openModal{
-    margin-left: 180px;
-}
-
-.modalContainer{
+.container-homework{
     display: grid;
     position:fixed;
     z-index: 1;
@@ -77,12 +75,7 @@ i.fa-envelope:hover{
     opacity: 0;
 }
 
-.show{
-    pointer-events: unset;
-    opacity: 1;
-}
-
-.homeworkMoldal{
+.homework-modal{
     display: block;
     margin-left: 30px;
     color: rgba(0,0,0,.9);
@@ -90,57 +83,47 @@ i.fa-envelope:hover{
     font-weight: 400;
 }
 
-.close3{
+.close-container-homework{
     position: absolute;
     margin-left: 180px;
     margin-top: -40px;
 }
 
-.close3:hover{
-    color: rgba(68,136,255,1);
-}
-
-.work{
+.homework-item{
     height: 32px;
     display: grid;
     align-items: center;
     margin-top: 20px;
 }
 
-.work:hover{
+.homework-item:hover{
     background-color: rgba(163,172,182,.2);
 }
 
-.containerForm{
+.container-form{
     display: grid;
     z-index: 1;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    height: 700px;
-    width: 800px;
+    height: 250px;
+    width: 700px;
     margin: auto;
     box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
     pointer-events: none;
     opacity: 0;
-    background-color: white;
+    background-color: var(--color_1);
     margin-top: -30px;
-    margin-bottom: 30px;
 }
 
-.show2{
-    pointer-events: unset;
-    opacity: 1;
-}
-
-.modalHome{
+.modal-create-task{
     display: grid;
-    grid-template-columns: 1fr 30px;
+    grid-template-rows: 80px 110px;
     grid-column-gap: 20px;
 }
 
-textarea{
+.list-homework{
     width: 90%;
    height: 30px;
    border: none;
@@ -151,7 +134,7 @@ textarea{
    margin-top: 10px;
 }
 
-textarea:hover{
+.list-homework:hover{
     border-bottom: 1px solid black;
 }
 
@@ -159,32 +142,23 @@ a{
     text-decoration: none;
 }
 
-.close{
+.close-modal-create-t{
     font-size: 25px;
     color: black;
     font-weight: normal;
+    position: absolute;
+    margin-left: 670px;
 }
 
-.close:hover{
-    color: rgba(68,136,255,1);
-}
-
-.boton{
+.send-form-button{
     position: absolute;
     height: 30px;
     width: 60px;
-    left: 1040px;
-    top: 680px;
+    left: 1000px;
+    top: 230px;
 }
 
-.list{
-    display: block;
-    margin: 35px;
-    font-family: 'Assistant', sans-serif;
-    color: rgba(0, 0, 0, 0.9)
-}
-
-.sectionWorks{
+.modal-sectiones{
     display: grid;
     position:fixed;
     background-color: var(--color_1);
@@ -198,22 +172,27 @@ a{
     grid-template-rows: 40px;
 }
 
-.close2{
+.list-section{
+    display: block;
+    margin: 35px;
+    font-family: 'Assistant', sans-serif;
+    color: rgba(0, 0, 0, 0.9)
+}
+
+.close-modal-sections{
     position: absolute;
     margin-left: 185px;
 }
 
-.close2:hover{
+.close-container-homework:hover, .close-modal-create-t:hover, .close-modal-sections:hover, .close-modal-class:hover{
     color: rgba(68,136,255,1);
 }
 
 .show3{
-    pointer-events: unset;
-    opacity: 1;
     z-index: 1;
 }
 
-.welcome{
+.welcome-section{
     display: grid;
     grid-template-rows: 200px;
     position: fixed;
@@ -222,7 +201,7 @@ a{
     width: 100%;
 }
 
-.title_one{
+.title-section-welcome{
     margin-top: 200px;
     font-size: 70px;
     text-align: center;
@@ -236,11 +215,11 @@ a{
     margin-top: 150px;
 }
 
-.form-control{
+.input{
     background-color: var(--color_1);
 }
 
-.submit-button{
+.send-name-button{
     background-color: #04454d;
     color: var(--color_1);
     margin-top: 3px;
@@ -250,26 +229,18 @@ a{
     border-radius: 0.25rem;
 }
 
-.submit-button:hover{
+.send-name-button:hover{
     background-color: rgb(25, 93, 103);
 }
 
-.show6{
-    pointer-events: none;
-    opacity: 0;
-}
-
-.addNameC{
+.add-name-to-sect-welcome{
     display: grid;
-   /*  width: 300px;
-    height: 300px; */
     pointer-events: none;
     margin-top: -600px;
-    opacity: 0;
-    
+    opacity: 0; 
 }
 
-.nameWlcomeC{
+.name{
     margin: auto;
     font-weight: 600;
     font-size: 30px;
@@ -277,12 +248,7 @@ a{
     margin-left: 600px;
 }
 
-.show7{
-    pointer-events: unset;
-    opacity: 1;
-}
-
-.taskProgressC{
+.task-section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     position:fixed;
@@ -295,27 +261,17 @@ a{
     opacity: 0;
 }
 
-.show5{
-    pointer-events: unset;
-    opacity: 1;
-}
-
-.state{
-    display: grid;
-    grid-template-rows: 50px;
+.state-task{
+    display: flex;
+    flex-direction: column;
     width: 340px;
     height: 100%;
     box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
 }
 
-.title{
+.title-task-status{
     margin: 26px;
     font-size: 15px;
-}
-
-.newTaskC{
-    display: grid;
-    height: 60px;
 }
 
 p{
@@ -323,4 +279,51 @@ p{
     border-bottom: 1px solid grey;
     height: 30px;
     width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description-and-task{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: var(--color_1);
+    height: 150px;
+    width: 700px;
+    margin: auto;
+    left: 354px;
+    top: -40px;
+    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.description-class{
+    width: 94%;
+    margin-left: 20px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9)
+}
+
+.title-class{
+    margin-bottom: 30px;
+}
+
+.close-modal-class{
+    margin-top: -120px;
+    position: absolute;
+    left: 680px;
+}
+
+.show, .show3{
+    pointer-events: unset;
+    opacity: 1;
+}
+
+.remove-form-welcome, .remove-modal{
+    pointer-events: none;
+    opacity: 0;
 }
