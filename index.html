@@ -11,51 +11,51 @@
     <body>
         <header>
             <nav>
-                <a href="#sectioHomework" id="openSectionHomework" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
+                <a href="#seeSections" id="openModalSections" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
             </nav>
-            <a href="#modalContainer"><i id="iconOpenModal" class="icon icon_2 fa-solid fa-plus"></i></a>
-            <div id="modalContainer" class="modalContainer">
-                <div class="work">
-                    <a href="#createHomework" id="openHomework" class="homeworkMoldal">Homework</a>
-                    <a id="closeButton3" class="close3">x</a>
+            <a href="#modalWork"><i id="plusModal" class="icon icon_2 fa-solid fa-plus"></i></a>
+            <div id="modalWork" class="container-homework">
+                <div class="homework-item">
+                    <a id="openModalCreateTask" class="homework-modal">Homework</a>
+                    <a id="closeModalWork" class="close-container-homework">x</a>
                 </div>
             </div>
         </header>
-        <div id="formulario" class="containerForm">
-            <form id="modalHomework" class="modalHome">
-                <textarea name="homework" id="activity" class="listHomework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
-                <a id="closeButton" class="close">x</a>
-                <button type="submit" class="boton">Enviar</button>
+        <div id="form" class="container-form">
+            <form class="modal-create-task">
+                <textarea name="homework" id="activity" class="list-homework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
+                <textarea name="description" id="description" class="description-class" maxlength="1000" minlength="1" placeholder="Enter your task description"></textarea>
+                <a id="closeForm" class="close-modal-create-t">x</a>
+                <button type="submit" class="send-form-button">Enviar</button>
             </form>
         </div>
-        <section id="sectioHomework"class="sectionWorks">
-            <a href="#taskProgress" id="item_2" class="list">Task Progress</a>
-            <a href="#welcomeSection" id="item" class="list">Welcome Section</a>
-            <a id="closeButton2" class="close2">x</a>
+        <section id="seeSections"class="modal-sectiones">
+            <a href="#welcomeSection" id="item" class="list-section">Welcome Section</a>
+            <a href="#taskProgressSection" id="item_2" class="list-section">Task Progress</a>
+            <a id="closeSeeSections" class="close-modal-sections">x</a>
         </section>
-        <section id="welcomeSection" class="welcome">
-            <h1 class="title_one">Welcome</h1>
+        <section id="welcomeSection" class="welcome-section">
+            <h1 class="title-section-welcome">Welcome</h1>
             <form id="form_Welcome" class="welcom_form">
-                <label id="name-label" for="name">What's your name ?</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required/>
-                <button type="submit" id="submit" class="submit-button">Submit</button>
+                <label for="name">What's your name ?</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" required/>
+                <button type="submit" id="submit" class="send-name-button">Submit</button>
             </form>
-            <div id="addName" class="addNameC"></div>
+            <div id="addName" class="add-name-to-sect-welcome"></div>
         </section>
-        <section id="taskProgress" class="taskProgressC">
-            <div id="state1" class="state">
-                <h1 class="title">New</h1>
-                <div id="newTask" class="newTaskC">
-                </div>
+        <section id="taskProgressSection" class="task-section">
+            <div id="stateNew" class="state-task state-one">
+                <h1 class="title-task-status">New</h1>
+                <div id="newTask"></div>
             </div>
-            <div id="state2" class="state">
-                <h1 class="title">In Progress</h1>
+            <div id="stateInProgress" class="state-task state-two">
+                <h1 class="title-task-status">In Progress</h1>
             </div>
-            <div id="state3" class="state">
-                <h1 class="title">On Hold</h1>
+            <div id="stateOnHold" class="state-task state-three">
+                <h1 class="title-task-status">On Hold</h1>
             </div>
-            <div id="state4" class="state">
-                <h1 class="title">Completed</h1>
+            <div id="stateCompleted" class="state-task state-three">
+                <h1 class="title-task-status">Completed</h1>
             </div>
         </section>
         <script src="index.js"></script>
