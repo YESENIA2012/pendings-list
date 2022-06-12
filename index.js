@@ -4,113 +4,145 @@ const form = document.getElementById("form");
 const seeSections = document.getElementById("seeSections");
 const taskProgress = document.getElementById("taskProgressSection");
 const newTask = document.getElementById("newTask");
-let arrayActivitys = [];
-const stateNew = document.getElementById("stateNew");
-const inProgress = document.getElementById("stateInProgress");
-const completed = document.getElementById("stateOnHold");
-const onHold = document.getElementById("stateCompleted");
+const inProgressColumn = document.getElementById("inProgressColumn");
+const completedColumnd = document.getElementById("completedColumn");
 const form_Welcome = document.getElementById("form_Welcome");
-const addName = document.getElementById("addName");
-let myName = " ";
+const stateType = document.getElementById("stateType");
 
 //Functions
 
-const createActivity = (activity, description) => {
-  let item = {
-    activity: activity,
+const saveInformation = (activity, description, state) => {
+  let arrayActivitys = [];
+  const currentTasks = JSON.parse(localStorage.getItem("responsabilidades"));
+  let taskCounter = currentTasks ? currentTasks.length : 0;
+  item = {
+    title: activity,
     description: description,
+    state: state,
+    id: taskCounter,
   };
-  arrayActivitys.push(item);
-  return item;
+  if (currentTasks === null) {
+    localStorage.setItem("responsabilidades", JSON.stringify([item]));
+  } else {
+    currentTasks.push(item);
+    localStorage.setItem("responsabilidades", JSON.stringify(currentTasks));
+  }
+  addTasktoDom();
 };
 
-const saveInformation = (activity) => {
-  localStorage.setItem("responsabilidades", JSON.stringify(arrayActivitys));
-  addTask();
-};
-
-const addTask = () => {
-  newTask.innerHTML = " ";
+const addTasktoDom = () => {
   arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
+  newTask.innerHTML = " ";
 
   if (arrayActivitys === null) {
-    arrayActivitys = [];
     return;
   }
-  arrayActivitys.forEach((element) => {
-    let textTarea = document.createTextNode(element.activity);
-    let textTarea2 = document.createTextNode(element.activity);
-    let textDescription = document.createTextNode(element.description);
-    const tareas = document.createElement("p");
+
+  arrayActivitys.forEach(({ title, description }, index) => {
+    let textTarea = document.createTextNode(title);
+    let textTarea2 = document.createTextNode(title);
+    let textDescription = document.createTextNode(description);
+    taskElement = document.createElement("p");
+    const taskClass = document.createAttribute("class");
+    taskClass.value = `task-${index}`;
+    taskElement.setAttributeNode(taskClass);
+    taskElement.draggable = "true";
+    taskElement.appendChild(textTarea);
+    newTask.appendChild(taskElement);
+
     const descriptionAndTasContainer = document.createElement("div");
-    addTaskToDiv(tareas, textTarea);
-    addDescription(descriptionAndTasContainer, textDescription, textTarea2);
-    dragEvent(tareas);
-    dragToElement(stateNew, tareas);
-    dragToElement(inProgress, tareas);
-    dragToElement(completed, tareas);
-    dragToElement(onHold, tareas);
-    addresponsability(tareas, inProgress);
-    addresponsability(tareas, completed);
-    addresponsability(tareas, onHold);
-    tareas.addEventListener("click", () => {
+    /* addDescription(descriptionAndTasContainer, textDescription, textTarea2); */
+
+    dragAndDropTask(taskElement, todocolumn);
+    dragAndDropTask(taskElement, inProgressColumn);
+    dragAndDropTask(taskElement, completedColumnd);
+    taskElement.addEventListener("click", () => {
       descriptionAndTasContainer.classList.add("show");
     });
+    paintDB(inProgressColumn, completedColumnd, taskElement, index);
   });
 };
 
-function dragEvent(tareas) {
-  tareas.addEventListener("dragstart", () => {});
+let state = null;
+let evento = null;
+function dragAndDropTask(task, columnElement) {
+  task.addEventListener("dragstart", () => {});
+  task.addEventListener("dragend", () => {});
+  task.addEventListener("drag", () => {});
 
-  tareas.addEventListener("dragend", () => {});
-
-  tareas.addEventListener("drag", () => {});
-}
-
-function dragToElement(inProgress, tareas) {
-  inProgress.addEventListener("dragenter", (e) => {});
-
-  inProgress.addEventListener("dragleave", (e) => {});
-  inProgress.addEventListener("dragover", (e) => {
+  columnElement.addEventListener("dragenter", () => {});
+  columnElement.addEventListener("dragleave", () => {});
+  columnElement.addEventListener("dragover", (e) => {
     e.preventDefault();
   });
-}
 
-let evento = null;
-function addresponsability(tareas, inProgress) {
-  tareas.addEventListener("dragstart", function (e) {
+  task.addEventListener("dragstart", (e) => {
     evento = e.target;
   });
 
-  inProgress.addEventListener("drop", () => {
-    inProgress.appendChild(evento);
+  columnElement.addEventListener("drop", (e) => {
+    e.preventDefault();
+    let stateActivity = e.target;
+    let stateAttribute = stateActivity.getAttribute("class");
+    let position = stateAttribute.split(" ");
+    state = position[1];
+
+    if (evento !== null) {
+      const taskClass = evento.getAttribute("class");
+      let position = taskClass.split("-");
+      let taskId = position[1];
+
+      arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
+      arrayActivitys.map((item) => {
+        if (taskId == item.id) {
+          columnElement.appendChild(evento);
+          item.state = state;
+          localStorage.setItem(
+            "responsabilidades",
+            JSON.stringify(arrayActivitys)
+          );
+        }
+      });
+    }
   });
 }
 
-const saveName = (yourName) => {
-  localStorage.setItem("nombre", JSON.stringify(yourName));
+const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
+  arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
+  arrayActivitys.forEach((item) => {
+    if (item.id == index) {
+      if (item.state == "state-inprogress") {
+        inProgressColumn.appendChild(taskElement);
+      }
+      if (item.state == "state-completed") {
+        completedColumnd.appendChild(taskElement);
+      }
+    }
+  });
+  localStorage.setItem("responsabilidades", JSON.stringify(arrayActivitys));
+};
+
+let myName = " ";
+const createName = (yourName) => {
+  myName = yourName;
+};
+
+const saveName = () => {
+  localStorage.setItem("name", JSON.stringify(myName));
+  addNameFunc();
 };
 
 const addNameFunc = () => {
-  myName = JSON.parse(localStorage.getItem("nombre"));
+  const myNameDiv = document.getElementById("myName");
+  myName = JSON.parse(localStorage.getItem("name"));
 
-  let divWelcome = document.createElement("div");
-  const atributeDiv = document.createAttribute("class");
-  atributeDiv.value = "name";
-  divWelcome.setAttributeNode(atributeDiv);
-  let textDiv = document.createTextNode(myName);
-  divWelcome.appendChild(textDiv);
-  addName.appendChild(divWelcome);
+  if (myName === null) {
+    return;
+  }
+  myNameDiv.innerHTML = myName;
+  form_Welcome.classList.add("remove-form-welcome");
+  addName.classList.add("show");
 };
-
-function addTaskToDiv(tareas, textTarea) {
-  const taskClass = document.createAttribute("class");
-  taskClass.value = "task-class";
-  tareas.setAttributeNode(taskClass);
-  tareas.draggable = "true";
-  tareas.appendChild(textTarea);
-  newTask.appendChild(tareas);
-}
 
 function createModalDescAndTask(descriptionAndTasContainer) {
   const descriptionAndTaskClass = document.createAttribute("class");
@@ -173,10 +205,10 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   let activity = document.getElementById("activity").value;
   let description = document.getElementById("description").value;
-  createActivity(activity, description);
-  saveInformation();
+  saveInformation(activity, description, "state-new");
   document.getElementById("activity").value = "Enter the name of the new task";
   document.getElementById("description").value = "Enter your task description";
+  form.classList.remove("show");
 });
 
 openModalSections.addEventListener("click", (e) => {
@@ -196,10 +228,8 @@ item_2.addEventListener("click", () => {
 form_Welcome.addEventListener("submit", (e) => {
   e.preventDefault();
   let yourName = document.getElementById("name").value;
-  saveName(yourName);
-  form_Welcome.classList.add("remove-form-welcome");
-  addNameFunc();
-  addName.classList.add("show");
+  createName(yourName);
+  saveName();
 });
 
 closeSeeSections.addEventListener("click", () => {
@@ -210,4 +240,8 @@ closeModalWork.addEventListener("click", () => {
   modalWork.classList.remove("show");
 });
 
-document.addEventListener("DOMContentLoaded", addTask);
+document.addEventListener("DOMContentLoaded", addTasktoDom);
+
+document.addEventListener("DOMContentLoaded", addNameFunc);
+
+/* document.addEventListener("DOMContentLoaded", paintDB); */
