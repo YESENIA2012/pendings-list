@@ -51,15 +51,19 @@ const addTasktoDom = () => {
     newTask.appendChild(taskElement);
 
     const descriptionAndTasContainer = document.createElement("div");
-    /* addDescription(descriptionAndTasContainer, textDescription, textTarea2); */
+    addDescription(descriptionAndTasContainer, textDescription, textTarea2);
 
     dragAndDropTask(taskElement, todocolumn);
     dragAndDropTask(taskElement, inProgressColumn);
     dragAndDropTask(taskElement, completedColumnd);
+
     taskElement.addEventListener("click", () => {
       descriptionAndTasContainer.classList.add("show");
     });
+
     paintDB(inProgressColumn, completedColumnd, taskElement, index);
+    removeIdenticalChildrenInproressColumn(inProgressColumn);
+    removeIdenticalChildrenCompletedColumn(completedColumnd);
   });
 };
 
@@ -111,6 +115,9 @@ const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
   arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
   arrayActivitys.forEach((item) => {
     if (item.id == index) {
+      if (item.state == "state-new") {
+        newTask.appendChild(taskElement);
+      }
       if (item.state == "state-inprogress") {
         inProgressColumn.appendChild(taskElement);
       }
@@ -119,7 +126,49 @@ const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
       }
     }
   });
-  localStorage.setItem("responsabilidades", JSON.stringify(arrayActivitys));
+};
+
+const removeIdenticalChildrenInproressColumn = (inProgressColumn) => {
+  let childrenInprogressColumn = inProgressColumn.children;
+  let element = childrenInprogressColumn[1];
+
+  for (
+    let counter = 1;
+    counter < childrenInprogressColumn.length * 2;
+    counter++
+  ) {
+    let element2 = childrenInprogressColumn[counter + 1];
+
+    if (element2 == undefined || element == undefined) {
+      return;
+    }
+
+    if (element.className == element2.className) {
+      inProgressColumn.removeChild(element);
+    }
+  }
+};
+
+const removeIdenticalChildrenCompletedColumn = (completedColumnd) => {
+  let childrenInCompletedColumn = completedColumnd.children;
+  let element = childrenInCompletedColumn[1];
+
+  for (
+    let counter = 1;
+    counter < childrenInCompletedColumn.length * 2;
+    counter++
+  ) {
+    let element2 = childrenInCompletedColumn[counter + 1];
+
+    if (element2 == undefined || element == undefined) {
+      return;
+    }
+
+    if (element.className == element2.className) {
+      console.log("yesenia");
+      completedColumnd.removeChild(element);
+    }
+  }
 };
 
 let myName = " ";
@@ -206,8 +255,8 @@ form.addEventListener("submit", (e) => {
   let activity = document.getElementById("activity").value;
   let description = document.getElementById("description").value;
   saveInformation(activity, description, "state-new");
-  document.getElementById("activity").value = "Enter the name of the new task";
-  document.getElementById("description").value = "Enter your task description";
+  document.getElementById("activity").value = " ";
+  document.getElementById("description").value = " ";
   form.classList.remove("show");
 });
 
@@ -243,5 +292,3 @@ closeModalWork.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", addTasktoDom);
 
 document.addEventListener("DOMContentLoaded", addNameFunc);
-
-/* document.addEventListener("DOMContentLoaded", paintDB); */
