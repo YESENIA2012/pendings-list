@@ -23,8 +23,10 @@
         </header>
         <div id="form" class="container-form">
             <form class="modal-create-task">
-                <textarea name="homework" id="activity" class="list-homework" maxlength="1000" minlength="1" placeholder="Enter the name of the new task"></textarea>
-                <textarea name="description" id="description" class="description-class" maxlength="1000" minlength="1" placeholder="Enter your task description"></textarea>
+                <label for="activity" class="label-form-1">Enter the name of the new task</label>
+                <textarea name="homework" id="activity" class="list-homework" maxlength="1000" minlength="1" required></textarea>
+                <label for="description" class="label-form-2">Enter your task description</label>
+                <textarea name="description" id="description" class="description-class" maxlength="1000" minlength="1" required></textarea>
                 <a id="closeForm" class="close-modal-create-t">x</a>
                 <button type="submit" class="send-form-button">Enviar</button>
             </form>
@@ -41,23 +43,24 @@
                 <input type="text" name="name" id="name" placeholder="Enter your name" required/>
                 <button type="submit" id="submit" class="send-name-button">Submit</button>
             </form>
-            <div id="addName" class="add-name-to-sect-welcome"></div>
+            <div id="addName" class="add-name-to-sect-welcome">
+                <div id="myName" class="name"></div>
+            </div>
         </section>
         <section id="taskProgressSection" class="task-section">
-            <div id="stateNew" class="state-task state-one">
+            <div id="todocolumn" class="state-task state-new">
                 <h1 class="title-task-status">New</h1>
                 <div id="newTask"></div>
             </div>
-            <div id="stateInProgress" class="state-task state-two">
+            <div id="inProgressColumn" class="state-task state-inprogress">
                 <h1 class="title-task-status">In Progress</h1>
+
             </div>
-            <div id="stateOnHold" class="state-task state-three">
-                <h1 class="title-task-status">On Hold</h1>
-            </div>
-            <div id="stateCompleted" class="state-task state-three">
-                <h1 class="title-task-status">Completed</h1>
+            <div id="completedColumn" class="state-task state-completed">
+                <h1 class="title-task-status">Completed</h1> 
             </div>
         </section>
         <script src="index.js"></script>
     </body>
 </html>
+
