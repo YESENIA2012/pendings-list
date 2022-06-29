@@ -126,7 +126,7 @@ i.fa-envelope:hover{
 }
 
 
-.modal-create-task{
+.modal-create-task {
   display: grid;
   grid-template-rows: 40px 40px 40px 40px;
   grid-column-gap: 20px;
