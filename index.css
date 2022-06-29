@@ -99,7 +99,7 @@ i.fa-envelope:hover{
   background-color: rgba(163,172,182,.2);
 }
 
-.container-form{
+.container-form {
   display: grid;
   z-index: 1;
   top: 0;
@@ -115,6 +115,16 @@ i.fa-envelope:hover{
   background-color: var(--color_1);
   margin-top: -30px;
 }
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  pointer-events: unset;
+  opacity: 1;
+}
+
 
 .modal-create-task{
   display: grid;
@@ -321,10 +331,10 @@ p{
   left: 680px;
 }
 
-.show, .show3{
+/* .show, .show3{
   pointer-events: unset;
   opacity: 1;
-}
+} */
 
 .remove-form-welcome, .remove-modal{
   pointer-events: none;
@@ -359,7 +369,7 @@ p{
     box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   }
 
-  .container-form{
+  .container-form {
     margin-left: 200px;
     display: grid;
     z-index: 1;
@@ -372,6 +382,7 @@ p{
     background-color: var(--color_1);
     margin-top: -30px;
   }
+
   .send-form-button{
     position: absolute;
     height: 30px;

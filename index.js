@@ -1,13 +1,13 @@
-//Variables
-const modalWork = document.getElementById("modalWork");
-const form = document.getElementById("form");
-const seeSections = document.getElementById("seeSections");
-const taskProgress = document.getElementById("taskProgressSection");
-const newTask = document.getElementById("newTask");
-const inProgressColumn = document.getElementById("inProgressColumn");
-const completedColumnd = document.getElementById("completedColumn");
-const form_Welcome = document.getElementById("form_Welcome");
-const stateType = document.getElementById("stateType");
+//Global variables
+const modalWorkElement = document.querySelector("#modalWork");
+const form = document.querySelector("#form");
+const seeSections = document.querySelector("#seeSections");
+const taskProgress = document.querySelector("#taskProgressSection");
+const newTask = document.querySelector("#newTask");
+const inProgressColumn = document.querySelector("#inProgressColumn");
+const completedColumnd = document.querySelector("#completedColumn");
+const form_Welcome = document.querySelector("#form_Welcome");
+const stateType = document.querySelector("#stateType");
 
 //Functions
 
@@ -236,29 +236,33 @@ function addDescription(
 }
 
 //EventListener
-
-plusModal.addEventListener("click", () => {
-  modalWork.classList.add("show");
+plusIcon.addEventListener("click", () => {
+  modalWorkElement.classList.add("show");
 });
 
 openModalCreateTask.addEventListener("click", () => {
-  form.classList.add("show");
-  modalWork.classList.remove("show");
+  document.querySelector('.container-form').classList.add("show")
+  modalWorkElement.classList.remove("show");
 });
 
 closeForm.addEventListener("click", () => {
   form.classList.remove("show");
 });
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let activity = document.getElementById("activity").value;
-  let description = document.getElementById("description").value;
+document.querySelector('.send-form-button').addEventListener("click", (e) => {
+  const activity = document.querySelector('[name=task-title]').value
+  const description = document.querySelector('[name=task-description]').value;
   saveInformation(activity, description, "state-new");
-  document.getElementById("activity").value = " ";
-  document.getElementById("description").value = " ";
+  document.querySelector('[name=task-title]').value = " "
+  document.querySelector('[name=description]').value = " "
   form.classList.remove("show");
 });
+
+function onSubmitCreateTaskModal(e){
+  console.log("e ",e)
+  debugger
+  e.preventDefault();
+}
 
 openModalSections.addEventListener("click", (e) => {
   seeSections.classList.add("show3");

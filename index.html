@@ -13,7 +13,9 @@
             <nav>
                 <a href="#seeSections" id="openModalSections" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
             </nav>
-            <a href="#modalWork"><i id="plusModal" class="icon icon_2 fa-solid fa-plus"></i></a>
+            <a href="#modalWork">
+                <i id="plusIcon" class="icon icon_2 fa-solid fa-plus"></i>
+            </a>
             <div id="modalWork" class="container-homework">
                 <div class="homework-item">
                     <a id="openModalCreateTask" class="homework-modal">Homework</a>
@@ -21,12 +23,12 @@
                 </div>
             </div>
         </header>
-        <div id="form" class="container-form">
+        <div class="container-form hide">
             <form class="modal-create-task">
                 <label for="activity" class="label-form-1">Enter the name of the new task</label>
-                <textarea name="homework" id="activity" class="list-homework" maxlength="1000" minlength="1" required></textarea>
+                <textarea name="task-title" id="activity" class="list-homework" maxlength="1000" minlength="1" required></textarea>
                 <label for="description" class="label-form-2">Enter your task description</label>
-                <textarea name="description" id="description" class="description-class" maxlength="1000" minlength="1" required></textarea>
+                <textarea name="task-description" id="description" class="description-class" maxlength="1000" minlength="1" required></textarea>
                 <a id="closeForm" class="close-modal-create-t">x</a>
                 <button type="submit" class="send-form-button">Enviar</button>
             </form>
