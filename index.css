@@ -35,7 +35,7 @@ nav{
   text-align: center;
 }
 
-.icon_2{
+.plusIcon{
   margin-left: 190px;
 }
 
@@ -70,8 +70,6 @@ i.fa-envelope:hover{
   width: 200px;
   margin-top: 150px;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-  pointer-events: none;
-  opacity: 0;
 }
 
 .homework-modal{
@@ -99,7 +97,7 @@ i.fa-envelope:hover{
   background-color: rgba(163,172,182,.2);
 }
 
-.container-form {
+.container-form{
   display: grid;
   z-index: 1;
   top: 0;
@@ -110,32 +108,19 @@ i.fa-envelope:hover{
   width: 700px;
   margin: auto;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-  pointer-events: none;
-  opacity: 0;
   background-color: var(--color_1);
   margin-top: -30px;
 }
 
-.hide {
-  opacity: 0;
-}
-
-.show {
-  pointer-events: unset;
-  opacity: 1;
-}
-
-
-.modal-create-task {
+.modal-create-task{
   display: grid;
   grid-template-rows: 40px 40px 40px 40px;
   grid-column-gap: 20px;
 }
 
-.list-homework{
+.activity{
   width: 90%;
   height: 30px;
-  border: none;
   font-size: 20px;
   font-family: inherit;
   color: rgba(0,0,0,.9);
@@ -155,7 +140,7 @@ i.fa-envelope:hover{
   height: 30px; 
 }
 
-.list-homework:hover{
+.activity:hover{
   border-bottom: 1px solid black;
 }
 
@@ -163,7 +148,7 @@ a{
   text-decoration: none;
 }
 
-.close-modal-create-t{
+.close-containerForm{
   font-size: 25px;
   color: black;
   font-weight: normal;
@@ -179,7 +164,7 @@ a{
   top: 230px;
 }
 
-.modal-sectiones{
+.seeSections{
   display: grid;
   position:fixed;
   background-color: var(--color_1);
@@ -189,8 +174,6 @@ a{
   margin-top: 40px;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   grid-template-rows: 40px;
-  pointer-events: none;
-  opacity: 0;
 }
 
 .list-section{
@@ -200,12 +183,12 @@ a{
   color: rgba(0, 0, 0, 0.9)
 }
 
-.close-modal-sections{
+.close-seeSections{
   position: absolute;
   margin-left: 185px;
 }
 
-.close-container-homework:hover, .close-modal-create-t:hover, .close-modal-sections:hover, .close-modal-class:hover{
+.close-container-homework:hover, .close-containerForm:hover, .close-seeSections:hover, .close-modal-class:hover{
   color: rgba(68,136,255,1);
 }
 
@@ -228,7 +211,7 @@ a{
   text-align: center;
 }
 
-.welcom_form{
+.welcom-form{
   display: grid;
   width: 400px;
   margin: auto;
@@ -278,8 +261,6 @@ a{
   width: 1425px;
   margin-top: 70px;
   left: 17px;
-  pointer-events: none;
-  opacity: 0;
 }
 
 .title-task-status{
@@ -310,13 +291,13 @@ p{
   left: 354px;
   top: -40px;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-  pointer-events: none;
-  opacity: 0;
 }
 
 .description-class{
   width: 90%;
   height: 70px;
+  font-size: 20px;
+  font-family: inherit;
   margin-left: 20px;
   color: rgba(0, 0, 0, 0.9)
 }
@@ -331,10 +312,15 @@ p{
   left: 680px;
 }
 
-/* .show, .show3{
+.hide{
+  pointer-events: none;
+  opacity: 0;
+}
+
+.show, .show3{
   pointer-events: unset;
   opacity: 1;
-} */
+}
 
 .remove-form-welcome, .remove-modal{
   pointer-events: none;
@@ -369,7 +355,7 @@ p{
     box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   }
 
-  .container-form {
+  .container-form{
     margin-left: 200px;
     display: grid;
     z-index: 1;
@@ -382,7 +368,6 @@ p{
     background-color: var(--color_1);
     margin-top: -30px;
   }
-
   .send-form-button{
     position: absolute;
     height: 30px;

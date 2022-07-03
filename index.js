@@ -1,13 +1,11 @@
-//Global variables
-const modalWorkElement = document.querySelector("#modalWork");
-const form = document.querySelector("#form");
-const seeSections = document.querySelector("#seeSections");
-const taskProgress = document.querySelector("#taskProgressSection");
-const newTask = document.querySelector("#newTask");
-const inProgressColumn = document.querySelector("#inProgressColumn");
-const completedColumnd = document.querySelector("#completedColumn");
-const form_Welcome = document.querySelector("#form_Welcome");
-const stateType = document.querySelector("#stateType");
+const modalWork = document.querySelector(".container-homework");
+const form = document.querySelector(".container-form");
+const seeSections = document.querySelector(".seeSections");
+const taskProgress = document.querySelector(".task-section");
+const newTask = document.querySelector(".newTask");
+const inProgressColumn = document.querySelector(".state-inprogress");
+const completedColumnd = document.querySelector(".state-completed");
+const form_Welcome = document.querySelector(".welcom-form");
 
 //Functions
 
@@ -61,7 +59,7 @@ const addTasktoDom = () => {
       descriptionAndTasContainer.classList.add("show");
     });
 
-    paintDB(inProgressColumn, completedColumnd, taskElement, index);
+    drawTaskOnPage(inProgressColumn, completedColumnd, taskElement, index);
     removeIdenticalChildrenInproressColumn(inProgressColumn);
     removeIdenticalChildrenCompletedColumn(completedColumnd);
   });
@@ -111,7 +109,12 @@ function dragAndDropTask(task, columnElement) {
   });
 }
 
-const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
+const drawTaskOnPage = (
+  inProgressColumn,
+  completedColumnd,
+  taskElement,
+  index
+) => {
   arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
   arrayActivitys.forEach((item) => {
     if (item.id == index) {
@@ -236,46 +239,52 @@ function addDescription(
 }
 
 //EventListener
-plusIcon.addEventListener("click", () => {
-  modalWorkElement.classList.add("show");
+
+document.querySelector(".plusIcon").addEventListener("click", () => {
+  modalWork.classList.add("show");
+  modalWork.classList.remove("hide");
 });
 
-openModalCreateTask.addEventListener("click", () => {
-  document.querySelector('.container-form').classList.add("show")
-  modalWorkElement.classList.remove("show");
+document.querySelector(".homework-modal").addEventListener("click", () => {
+  form.classList.remove("hide");
+  form.classList.add("show");
+  modalWork.classList.add("hide");
+  modalWork.classList.remove("show");
 });
 
-closeForm.addEventListener("click", () => {
+document.querySelector(".close-containerForm").addEventListener("click", () => {
   form.classList.remove("show");
+  form.classList.add("hide");
 });
 
-document.querySelector('.send-form-button').addEventListener("click", (e) => {
-  const activity = document.querySelector('[name=task-title]').value
-  const description = document.querySelector('[name=task-description]').value;
-  saveInformation(activity, description, "state-new");
-  document.querySelector('[name=task-title]').value = " "
-  document.querySelector('[name=description]').value = " "
-  form.classList.remove("show");
-});
-
-function onSubmitCreateTaskModal(e){
-  console.log("e ",e)
-  debugger
+document.querySelector(".send-form-button").addEventListener("click", (e) => {
   e.preventDefault();
-}
+  let activity = document.querySelector("[name=task-title").value;
+  let description = document.querySelector("[name=task-description").value;
+  saveInformation(activity, description, "state-new");
+  document.querySelector("[name=task-title").value = " ";
+  document.querySelector("[name=task-description").value = " ";
+  form.classList.remove("show");
+  form.classList.add("hide");
+});
 
-openModalSections.addEventListener("click", (e) => {
+document.querySelector(".barsIcon").addEventListener("click", (e) => {
   seeSections.classList.add("show3");
+  seeSections.classList.remove("hide");
 });
 
-item.addEventListener("click", () => {
+document.querySelector(".itemWelcome").addEventListener("click", () => {
   taskProgress.classList.remove("show");
+  taskProgress.classList.add("hide");
   seeSections.classList.remove("show3");
+  seeSections.classList.add("hide");
 });
 
-item_2.addEventListener("click", () => {
+document.querySelector(".itemTaskProgress").addEventListener("click", () => {
   seeSections.classList.remove("show3");
+  seeSections.classList.add("hide");
   taskProgress.classList.add("show");
+  taskProgress.classList.remove("hide");
 });
 
 form_Welcome.addEventListener("submit", (e) => {
@@ -285,13 +294,17 @@ form_Welcome.addEventListener("submit", (e) => {
   saveName();
 });
 
-closeSeeSections.addEventListener("click", () => {
+document.querySelector(".close-seeSections").addEventListener("click", () => {
   seeSections.classList.remove("show3");
+  seeSections.classList.add("hide");
 });
 
-closeModalWork.addEventListener("click", () => {
-  modalWork.classList.remove("show");
-});
+document
+  .querySelector(".close-container-homework")
+  .addEventListener("click", () => {
+    modalWork.classList.remove("show");
+    modalWork.classList.add("hide");
+  });
 
 document.addEventListener("DOMContentLoaded", addTasktoDom);
 
