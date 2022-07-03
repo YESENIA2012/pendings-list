@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Lista de tareas</title>
-        <meta charset="uft-8">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/> 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet" type="text/css" href="index.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="#seeSections" id="openModalSections" class="iconos"><i class="icon fa-solid fa-bars"></i></a>
-            </nav>
-            <a href="#modalWork">
-                <i id="plusIcon" class="icon icon_2 fa-solid fa-plus"></i>
-            </a>
-            <div id="modalWork" class="container-homework">
-                <div class="homework-item">
-                    <a id="openModalCreateTask" class="homework-modal">Homework</a>
-                    <a id="closeModalWork" class="close-container-homework">x</a>
-                </div>
-            </div>
-        </header>
-        <div class="container-form hide">
-            <form class="modal-create-task">
-                <label for="activity" class="label-form-1">Enter the name of the new task</label>
-                <textarea name="task-title" id="activity" class="list-homework" maxlength="1000" minlength="1" required></textarea>
-                <label for="description" class="label-form-2">Enter your task description</label>
-                <textarea name="task-description" id="description" class="description-class" maxlength="1000" minlength="1" required></textarea>
-                <a id="closeForm" class="close-modal-create-t">x</a>
-                <button type="submit" class="send-form-button">Enviar</button>
-            </form>
+  <head>
+    <title>Lista de tareas</title>
+    <meta charset="uft-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#seeSections" class="barsIcon"><i class="icon fa-solid fa-bars"></i></a>
+      </nav>
+      <a href="#container-homework"><i class="icon plusIcon fa-solid fa-plus"></i></a>
+      <div class="container-homework hide">
+        <div class="homework-item">
+          <a href="#container-form" class="homework-modal">Homework</a>
+          <a class="close-container-homework">x</a>
         </div>
-        <section id="seeSections"class="modal-sectiones">
-            <a href="#welcomeSection" id="item" class="list-section">Welcome Section</a>
-            <a href="#taskProgressSection" id="item_2" class="list-section">Task Progress</a>
-            <a id="closeSeeSections" class="close-modal-sections">x</a>
-        </section>
-        <section id="welcomeSection" class="welcome-section">
-            <h1 class="title-section-welcome">Welcome</h1>
-            <form id="form_Welcome" class="welcom_form">
-                <label for="name">What's your name ?</label>
-                <input type="text" name="name" id="name" placeholder="Enter your name" required/>
-                <button type="submit" id="submit" class="send-name-button">Submit</button>
-            </form>
-            <div id="addName" class="add-name-to-sect-welcome">
-                <div id="myName" class="name"></div>
-            </div>
-        </section>
-        <section id="taskProgressSection" class="task-section">
-            <div id="todocolumn" class="state-task state-new">
-                <h1 class="title-task-status">New</h1>
-                <div id="newTask"></div>
-            </div>
-            <div id="inProgressColumn" class="state-task state-inprogress">
-                <h1 class="title-task-status">In Progress</h1>
+      </div>
+    </header>
+    <div class="container-form hide">
+      <form class="modal-create-task">
+        <label for="activity" class="label-form-1">Enter the name of the new task</label>
+        <textarea name="task-title" class="activity" maxlength="1000" minlength="1" required></textarea>
+        <label for="description" class="label-form-2">Enter your task description</label>
+        <textarea name="task-description" class="description-class" maxlength="1000" minlength="1" required></textarea>
+        <a class="close-containerForm">x</a>
+        <button type="submit" class="send-form-button">Enviar</button>
+      </form>
+    </div>
+    <section class="seeSections hide">
+      <a href="#welcomeSection" class="list-section itemWelcome">Welcome Section</a>
+      <a href="#taskProgressSection" class="list-section itemTaskProgress">Task Progress</a>
+      <a class="close-seeSections">x</a>
+    </section>
+    <section class="welcome-section">
+      <h1 class="title-section-welcome">Welcome</h1>
+      <form class="welcom-form">
+        <label for="name">What's your name ?</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name" required/>
+        <button type="submit" id="submit" class="send-name-button">Submit</button>
+      </form>
+      <div id="addName" class="add-name-to-sect-welcome">
+        <div id="myName" class="name"></div>
+      </div>
+    </section>
+      <section class="task-section hide">
+          <div id="todocolumn" class="state-task state-new">
+              <h1 class="title-task-status">New</h1>
+              <div class="newTask"></div>
+          </div>
+          <div class="state-task state-inprogress">
+              <h1 class="title-task-status">In Progress</h1>
 
-            </div>
-            <div id="completedColumn" class="state-task state-completed">
-                <h1 class="title-task-status">Completed</h1> 
-            </div>
-        </section>
-        <script src="index.js"></script>
-    </body>
+          </div>
+          <div class="state-task state-completed">
+              <h1 class="title-task-status">Completed</h1> 
+          </div>
+      </section>
+      <script src="index.js"></script>
+  </body>
 </html>
 
