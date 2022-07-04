@@ -165,6 +165,7 @@ a{
 }
 
 .seeSections{
+  z-index: 1;
   display: grid;
   position:fixed;
   background-color: var(--color_1);
@@ -180,20 +181,16 @@ a{
   display: block;
   margin: 35px;
   font-family: 'Assistant', sans-serif;
-  color: rgba(0, 0, 0, 0.9)
+  color: rgba(0, 0, 0, 0.9) 
 }
 
-.close-seeSections{
+.close-sections{
   position: absolute;
   margin-left: 185px;
 }
 
-.close-container-homework:hover, .close-containerForm:hover, .close-seeSections:hover, .close-modal-class:hover{
+.close-container-homework:hover, .close-containerForm:hover, .close-sections:hover, .close-modal-class:hover{
   color: rgba(68,136,255,1);
-}
-
-.show3{
-  z-index: 1;
 }
 
 .welcome-section{
@@ -290,6 +287,8 @@ p{
   margin: auto;
   left: 354px;
   top: -40px;
+  pointer-events: none;
+  opacity: 0;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
 }
 
@@ -317,7 +316,7 @@ p{
   opacity: 0;
 }
 
-.show, .show3{
+.show{
   pointer-events: unset;
   opacity: 1;
 }
@@ -377,15 +376,16 @@ p{
   }
 
  .task-section {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  background-color: var(--color_1);
-  height: 100%;
-  width: 70%;
-  margin-top: 70px;
-  left: 17px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: var(--color_1);
+    height: 100%;
+    width: 70%;
+    margin-top: 70px;
+    left: 17px;
   }
+
   .state-task {
     display: flex;
     flex-direction: column;
