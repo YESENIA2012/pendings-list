@@ -269,19 +269,19 @@ document.querySelector(".send-form-button").addEventListener("click", (e) => {
 });
 
 document.querySelector(".barsIcon").addEventListener("click", (e) => {
-  seeSections.classList.add("show3");
+  seeSections.classList.add("show");
   seeSections.classList.remove("hide");
 });
 
 document.querySelector(".itemWelcome").addEventListener("click", () => {
   taskProgress.classList.remove("show");
   taskProgress.classList.add("hide");
-  seeSections.classList.remove("show3");
+  seeSections.classList.remove("show");
   seeSections.classList.add("hide");
 });
 
 document.querySelector(".itemTaskProgress").addEventListener("click", () => {
-  seeSections.classList.remove("show3");
+  seeSections.classList.remove("show");
   seeSections.classList.add("hide");
   taskProgress.classList.add("show");
   taskProgress.classList.remove("hide");
@@ -294,8 +294,8 @@ form_Welcome.addEventListener("submit", (e) => {
   saveName();
 });
 
-document.querySelector(".close-seeSections").addEventListener("click", () => {
-  seeSections.classList.remove("show3");
+document.querySelector(".close-sections").addEventListener("click", () => {
+  seeSections.classList.remove("show");
   seeSections.classList.add("hide");
 });
 
