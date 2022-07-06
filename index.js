@@ -1,6 +1,6 @@
 const modalWork = document.querySelector(".container-homework");
 const form = document.querySelector(".container-form");
-const seeSections = document.querySelector(".seeSections");
+const seeSections = document.querySelector(".modalSections");
 const taskProgress = document.querySelector(".task-section");
 const newTask = document.querySelector(".newTask");
 const inProgressColumn = document.querySelector(".state-inprogress");
@@ -185,7 +185,7 @@ const saveName = () => {
 };
 
 const addNameFunc = () => {
-  const myNameDiv = document.getElementById("myName");
+  const myNameDiv = document.querySelector(".name");
   myName = JSON.parse(localStorage.getItem("name"));
 
   if (myName === null) {
@@ -193,7 +193,8 @@ const addNameFunc = () => {
   }
   myNameDiv.innerHTML = myName;
   form_Welcome.classList.add("remove-form-welcome");
-  addName.classList.add("show");
+  document.querySelector(".addName-to-sectionWelcome").classList.remove("hide");
+  document.querySelector(".addName-to-sectionWelcome").classList.add("show");
 };
 
 function createModalDescAndTask(descriptionAndTasContainer) {

@@ -11,7 +11,7 @@
   <body>
     <header>
       <nav>
-        <a href="#seeSections" class="barsIcon"><i class="icon fa-solid fa-bars"></i></a>
+        <a href="#modalSections" class="barsIcon"><i class="icon fa-solid fa-bars"></i></a>
       </nav>
       <a href="#container-homework"><i class="icon plusIcon fa-solid fa-plus"></i></a>
       <div class="container-homework hide">
@@ -31,10 +31,10 @@
         <button type="submit" class="send-form-button">Enviar</button>
       </form>
     </div>
-    <section class="seeSections hide">
+    <section class="modalSections hide">
+      <a class="close-sections">x</a>
       <a href="#welcomeSection" class="list-section itemWelcome">Welcome Section</a>
       <a href="#taskProgressSection" class="list-section itemTaskProgress">Task Progress</a>
-      <a class="close-sections">x</a>
     </section>
     <section class="welcome-section">
       <h1 class="title-section-welcome">Welcome</h1>
@@ -43,24 +43,23 @@
         <input type="text" name="name" id="name" placeholder="Enter your name" required/>
         <button type="submit" id="submit" class="send-name-button">Submit</button>
       </form>
-      <div id="addName" class="add-name-to-sect-welcome">
-        <div id="myName" class="name"></div>
+      <div class="addName-to-sectionWelcome hide">
+        <div class="name"></div>
       </div>
     </section>
-      <section class="task-section hide">
-          <div id="todocolumn" class="state-task state-new">
-              <h1 class="title-task-status">New</h1>
-              <div class="newTask"></div>
-          </div>
-          <div class="state-task state-inprogress">
-              <h1 class="title-task-status">In Progress</h1>
-
-          </div>
-          <div class="state-task state-completed">
-              <h1 class="title-task-status">Completed</h1> 
-          </div>
-      </section>
-      <script src="index.js"></script>
+    <section class="task-section hide">
+      <div id="todocolumn" class="state-task state-new">
+        <h1 class="title-task-status">New</h1>
+        <div class="newTask"></div>
+      </div>
+      <div class="state-task state-inprogress">
+        <h1 class="title-task-status">In Progress</h1>
+      </div>
+      <div class="state-task state-completed">
+        <h1 class="title-task-status">Completed</h1> 
+        </div>
+    </section>
+    <script src="index.js"></script>
   </body>
 </html>
 

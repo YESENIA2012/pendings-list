@@ -62,7 +62,6 @@ i.fa-envelope:hover{
 } 
 
 .container-homework{
-  display: grid;
   position:fixed;
   z-index: 1;
   background-color: var(--color_1);
@@ -98,15 +97,9 @@ i.fa-envelope:hover{
 }
 
 .container-form{
-  display: grid;
   z-index: 1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   height: 250px;
   width: 700px;
-  margin: auto;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   background-color: var(--color_1);
   margin-top: -30px;
@@ -164,29 +157,34 @@ a{
   top: 230px;
 }
 
-.seeSections{
+.modalSections{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   z-index: 1;
-  display: grid;
   position:fixed;
   background-color: var(--color_1);
-  height: 150px;
+  height: 100px;
   width: 200px;
   left: 50px;
   margin-top: 40px;
   box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-  grid-template-rows: 40px;
 }
 
 .list-section{
-  display: block;
-  margin: 35px;
   font-family: 'Assistant', sans-serif;
   color: rgba(0, 0, 0, 0.9) 
+}
+
+.list-section:hover{
+  background-color: rgba(163,172,182,.2);
 }
 
 .close-sections{
   position: absolute;
   margin-left: 185px;
+  bottom: 80px;
 }
 
 .close-container-homework:hover, .close-containerForm:hover, .close-sections:hover, .close-modal-class:hover{
@@ -194,12 +192,9 @@ a{
 }
 
 .welcome-section{
-  display: grid;
-  grid-template-rows: 200px;
   position: fixed;
-  margin-top: 55px;
-  height: 1425px;
   width: 100%;
+  margin-top: 60px;
 }
 
 .title-section-welcome{
@@ -209,11 +204,11 @@ a{
 }
 
 .welcom-form{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 400px;
   margin: auto;
-  height: 100px;
-  margin-top: 150px;
+  margin-top: 80px;
 }
 
 .input{
@@ -234,28 +229,22 @@ a{
   background-color: rgb(25, 93, 103);
 }
 
-.add-name-to-sect-welcome{
-  display: grid;
-  pointer-events: none;
-  margin-top: -600px;
-  opacity: 0; 
+.addName-to-sectionWelcome{
+  display: flex;
+  margin-top: -100px;
 }
 
 .name{
   margin: auto;
   font-weight: 600;
   font-size: 30px;
-  position: absolute;
-  margin-left: 600px;
 }
 
 .task-section{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   position:fixed;
   background-color: var(--color_1);
   height: 100%;
-  width: 1425px;
   margin-top: 70px;
   left: 17px;
 }
@@ -330,60 +319,17 @@ p{
  header{
    width: 110%;
  }
- .welcome-section{
-  display: grid;
-  grid-template-rows: 200px;
-  position: fixed;
-  margin-top: 55px;
-  height: 1425px;
-  width: 100%;
-}
- .name{
-   margin-left: 410px;
- }
-
- .container-homework{
-    display: grid;
-    position:fixed;
-    z-index: 1;
-    background-color: var(--color_1);
-    height: 100px;
-    width: 200px;
-    left: 820px;
-    margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-  }
 
   .container-form{
     margin-left: 200px;
-    display: grid;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    height: 250px;
-    width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-    background-color: var(--color_1);
-    margin-top: -30px;
   }
+
   .send-form-button{
     position: absolute;
     height: 30px;
     width: 60px;
     left: 800px;
     top: 230px;
-  }
-
- .task-section {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    background-color: var(--color_1);
-    height: 100%;
-    width: 70%;
-    margin-top: 70px;
-    left: 17px;
   }
 
   .state-task {
@@ -408,43 +354,11 @@ p{
   header{
    width: 110%;
   }
-  .welcome-section{
-    display: grid;
-    grid-template-rows: 200px;
-    position: fixed;
-    margin-top: 55px;
-    height: 1425px;
-    width: 100%;
-  }
-  .name{
-    margin-left: 410px;
-  }
 
   .container-homework{
-    display: grid;
-    position:fixed;
-    z-index: 1;
-    background-color: var(--color_1);
-    height: 100px;
-    width: 200px;
     left: 820px;
-    margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   }
 
-  .container-form{
-    margin-left: 200px;
-    display: grid;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    height: 250px;
-    width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-    background-color: var(--color_1);
-    margin-top: -30px;
-  }
   .send-form-button{
     position: absolute;
     height: 30px;
@@ -454,15 +368,9 @@ p{
   }
 
   .task-section {
-    display: flex;
     flex-direction: column;
-    position: fixed;
-    background-color: var(--color_1);
-    height: 100%;
-    width: 70%;
-    margin-top: 70px;
-    left: 17px;
   }
+
   .state-task {
     display: flex;
     flex-direction: column;
@@ -483,44 +391,19 @@ p{
 
 @media (min-width: 1400px) {
   header{
-    width: 110%;
-  }
-  .welcome-section{
-    display: grid;
-    grid-template-rows: 200px;
-    position: fixed;
-    margin-top: 55px;
-    height: 1425px;
     width: 100%;
   }
-  .name{
-    margin-left: 600px;
+
+  .plusIcon {
+    margin-left: 270px;
   }
 
   .container-homework{
-    display: grid;
-    position:fixed;
-    z-index: 1;
-    background-color: var(--color_1);
-    height: 100px;
-    width: 200px;
     left: 1180px;
-    margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
   }
 
   .container-form{
     margin-left: 350px;
-    display: grid;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    height: 250px;
-    width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-    background-color: var(--color_1);
-    margin-top: -30px;
   }
   .send-form-button{
     position: absolute;
@@ -531,15 +414,9 @@ p{
   }
 
   .task-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position:fixed;
-    background-color: var(--color_1);
-    height: 100%;
-    width: 1425px;
-    margin-top: 70px;
-    left: 17px;
-   
+    flex-direction: row;
+    justify-content: space-around;
+    width: 98%;
   }
  
   .state-task {
