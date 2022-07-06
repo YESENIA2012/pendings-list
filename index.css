@@ -153,7 +153,6 @@ a{
   position: absolute;
   height: 30px;
   width: 60px;
-  left: 1000px;
   top: 230px;
 }
 
@@ -258,8 +257,6 @@ p{
   margin: 26px 0 0 26px;
   border-bottom: 1px solid grey;
   height: 30px;
-  width: 400px;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -325,28 +322,17 @@ p{
   }
 
   .send-form-button{
-    position: absolute;
-    height: 30px;
-    width: 60px;
     left: 800px;
-    top: 230px;
   }
 
   .state-task {
-    display: flex;
-    flex-direction: column;
     width: 1030px;
     height: 100%;
     box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
   }
+
   p {
-    margin: 26px 0 0 26px;
-    border-bottom: 1px solid grey;
-    height: 30px;
     width: 970px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
@@ -359,33 +345,8 @@ p{
     left: 820px;
   }
 
-  .send-form-button{
-    position: absolute;
-    height: 30px;
-    width: 60px;
-    left: 800px;
-    top: 230px;
-  }
-
   .task-section {
     flex-direction: column;
-  }
-
-  .state-task {
-    display: flex;
-    flex-direction: column;
-    width: 1030px;
-    height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
-  }
-  p {
-    margin: 26px 0 0 26px;
-    border-bottom: 1px solid grey;
-    height: 30px;
-    width: 970px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
@@ -406,11 +367,7 @@ p{
     margin-left: 350px;
   }
   .send-form-button{
-    position: absolute;
-    height: 30px;
-    width: 60px;
     left: 950px;
-    top: 230px;
   }
 
   .task-section{
@@ -420,20 +377,10 @@ p{
   }
  
   .state-task {
-    display: flex;
-    flex-direction: column;
     width: 450px;
-    height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
   }
 
   p {
-    margin: 26px 0 0 26px;
-    border-bottom: 1px solid grey;
-    height: 30px;
     width: 400px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
