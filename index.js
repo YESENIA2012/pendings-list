@@ -5,71 +5,80 @@ const seeSections = document.getElementById("seeSections");
 const taskProgress = document.getElementById("taskProgressSection");
 const newTask = document.getElementById("newTask");
 const inProgressColumn = document.getElementById("inProgressColumn");
-const completedColumnd = document.getElementById("completedColumn");
+const completedColumn = document.getElementById("completedColumn");
 const form_Welcome = document.getElementById("form_Welcome");
 const stateType = document.getElementById("stateType");
 
 //Functions
 
+const createElementWithClass = (tagName, className) => {
+  const element = document.createElement(tagName);
+  element.classList.add(className);
+  return element;
+};
+
+const createTextNodeFunction = (text) => {
+  return document.createTextNode(text);
+};
+
 const saveInformation = (activity, description, state) => {
-  let arrayActivitys = [];
-  const currentTasks = JSON.parse(localStorage.getItem("responsabilidades"));
+  const currentTasks = JSON.parse(localStorage.getItem("responsibilities"));
   let taskCounter = currentTasks ? currentTasks.length : 0;
+
   item = {
     title: activity,
     description: description,
     state: state,
     id: taskCounter,
   };
-  if (currentTasks === null) {
-    localStorage.setItem("responsabilidades", JSON.stringify([item]));
+
+  addTasktoDom();
+
+  if (!currentTasks) {
+    localStorage.setItem("responsibilities", JSON.stringify([item]));
   } else {
     currentTasks.push(item);
-    localStorage.setItem("responsabilidades", JSON.stringify(currentTasks));
+    localStorage.setItem("responsibilities", JSON.stringify(currentTasks));
   }
-  addTasktoDom();
 };
 
 const addTasktoDom = () => {
-  arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
-  newTask.innerHTML = " ";
+  arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
 
-  if (arrayActivitys === null) {
+  if (!arrayActivitys) {
     return;
   }
 
   arrayActivitys.forEach(({ title, description }, index) => {
-    let textTarea = document.createTextNode(title);
-    let textTarea2 = document.createTextNode(title);
-    let textDescription = document.createTextNode(description);
-    taskElement = document.createElement("p");
-    const taskClass = document.createAttribute("class");
-    taskClass.value = `task-${index}`;
-    taskElement.setAttributeNode(taskClass);
+    let textTarea = createTextNodeFunction(title);
+    let textDescription = createTextNodeFunction(description);
+    taskElement = createElementWithClass("p", `task-${index}`);
+
     taskElement.draggable = "true";
+    taskElement.innerHTML = title;
+
     taskElement.appendChild(textTarea);
     newTask.appendChild(taskElement);
 
     const descriptionAndTasContainer = document.createElement("div");
-    addDescription(descriptionAndTasContainer, textDescription, textTarea2);
+    addDescription(descriptionAndTasContainer, textDescription, textTarea);
 
     dragAndDropTask(taskElement, todocolumn);
     dragAndDropTask(taskElement, inProgressColumn);
-    dragAndDropTask(taskElement, completedColumnd);
+    dragAndDropTask(taskElement, completedColumn);
 
     taskElement.addEventListener("click", () => {
       descriptionAndTasContainer.classList.add("show");
     });
 
-    paintDB(inProgressColumn, completedColumnd, taskElement, index);
+    paintDB(inProgressColumn, completedColumn, taskElement, index);
     removeIdenticalChildrenInproressColumn(inProgressColumn);
-    removeIdenticalChildrenCompletedColumn(completedColumnd);
+    removeIdenticalChildrenCompletedColumn(completedColumn);
   });
 };
 
-let state = null;
-let evento = null;
 function dragAndDropTask(task, columnElement) {
+  let event = null;
   task.addEventListener("dragstart", () => {});
   task.addEventListener("dragend", () => {});
   task.addEventListener("drag", () => {});
@@ -81,7 +90,7 @@ function dragAndDropTask(task, columnElement) {
   });
 
   task.addEventListener("dragstart", (e) => {
-    evento = e.target;
+    event = e.target;
   });
 
   columnElement.addEventListener("drop", (e) => {
@@ -89,20 +98,20 @@ function dragAndDropTask(task, columnElement) {
     let stateActivity = e.target;
     let stateAttribute = stateActivity.getAttribute("class");
     let position = stateAttribute.split(" ");
-    state = position[1];
+    let state = position[1];
 
-    if (evento !== null) {
-      const taskClass = evento.getAttribute("class");
+    if (event) {
+      const taskClass = event.getAttribute("class");
       let position = taskClass.split("-");
       let taskId = position[1];
 
-      arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
+      arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
       arrayActivitys.map((item) => {
         if (taskId == item.id) {
-          columnElement.appendChild(evento);
+          columnElement.appendChild(event);
           item.state = state;
           localStorage.setItem(
-            "responsabilidades",
+            "responsibilities",
             JSON.stringify(arrayActivitys)
           );
         }
@@ -111,8 +120,8 @@ function dragAndDropTask(task, columnElement) {
   });
 }
 
-const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
-  arrayActivitys = JSON.parse(localStorage.getItem("responsabilidades"));
+const paintDB = (inProgressColumn, completedColumn, taskElement, index) => {
+  arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
   arrayActivitys.forEach((item) => {
     if (item.id == index) {
       if (item.state == "state-new") {
@@ -122,7 +131,7 @@ const paintDB = (inProgressColumn, completedColumnd, taskElement, index) => {
         inProgressColumn.appendChild(taskElement);
       }
       if (item.state == "state-completed") {
-        completedColumnd.appendChild(taskElement);
+        completedColumn.appendChild(taskElement);
       }
     }
   });
@@ -149,8 +158,8 @@ const removeIdenticalChildrenInproressColumn = (inProgressColumn) => {
   }
 };
 
-const removeIdenticalChildrenCompletedColumn = (completedColumnd) => {
-  let childrenInCompletedColumn = completedColumnd.children;
+const removeIdenticalChildrenCompletedColumn = (completedColumn) => {
+  let childrenInCompletedColumn = completedColumn.children;
   let element = childrenInCompletedColumn[1];
 
   for (
@@ -165,29 +174,19 @@ const removeIdenticalChildrenCompletedColumn = (completedColumnd) => {
     }
 
     if (element.className == element2.className) {
-      console.log("yesenia");
-      completedColumnd.removeChild(element);
+      completedColumn.removeChild(element);
     }
   }
 };
 
-let myName = " ";
-const createName = (yourName) => {
-  myName = yourName;
-};
-
-const saveName = () => {
-  localStorage.setItem("name", JSON.stringify(myName));
-  addNameFunc();
-};
-
 const addNameFunc = () => {
   const myNameDiv = document.getElementById("myName");
-  myName = JSON.parse(localStorage.getItem("name"));
+  let myName = JSON.parse(localStorage.getItem("name"));
 
-  if (myName === null) {
+  if (!myName) {
     return;
   }
+
   myNameDiv.innerHTML = myName;
   form_Welcome.classList.add("remove-form-welcome");
   addName.classList.add("show");
@@ -201,15 +200,14 @@ function createModalDescAndTask(descriptionAndTasContainer) {
 }
 
 function createButtonCloseModal(descriptionAndTasContainer) {
-  const closeModal = document.createElement("a");
-  const closeModalClass = document.createAttribute("class");
-  closeModalClass.value = "close-modal-class";
-  closeModal.setAttributeNode(closeModalClass);
-  const textModal = document.createTextNode("x");
+  const closeModal = createElementWithClass("a", "close-modal-class");
+
+  const textModal = createTextNodeFunction("x");
   closeModal.appendChild(textModal);
   descriptionAndTasContainer.appendChild(closeModal);
+
   closeModal.addEventListener("click", () => {
-    descriptionAndTasContainer.classList.add("remove-modal");
+    descriptionAndTasContainer.classList.remove("show");
   });
 }
 
@@ -219,17 +217,15 @@ function addDescription(
   textTarea
 ) {
   createModalDescAndTask(descriptionAndTasContainer);
-  const titleTask = document.createElement("div");
-  const titleTaskClass = document.createAttribute("class");
-  titleTaskClass.value = "title-class";
-  titleTask.setAttributeNode(titleTaskClass);
+  const titleTask = createElementWithClass("div", "title-class");
   titleTask.appendChild(textTarea);
   descriptionAndTasContainer.appendChild(titleTask);
 
-  const descriptionContainer = document.createElement("div");
-  const descriptionClass = document.createAttribute("class");
-  descriptionClass.value = "description-class";
-  descriptionContainer.setAttributeNode(descriptionClass);
+  const descriptionContainer = createElementWithClass(
+    "div",
+    "description-class"
+  );
+
   descriptionContainer.appendChild(textDescription);
   descriptionAndTasContainer.appendChild(descriptionContainer);
   newTask.appendChild(descriptionAndTasContainer);
@@ -277,8 +273,8 @@ item_2.addEventListener("click", () => {
 form_Welcome.addEventListener("submit", (e) => {
   e.preventDefault();
   let yourName = document.getElementById("name").value;
-  createName(yourName);
-  saveName();
+  localStorage.setItem("name", JSON.stringify(yourName));
+  addNameFunc();
 });
 
 closeSeeSections.addEventListener("click", () => {

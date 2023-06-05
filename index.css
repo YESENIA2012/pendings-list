@@ -1,18 +1,18 @@
-:root{
-  --color_1: rgba(254,254,255,1)
+:root {
+  --color_1: rgba(254, 254, 255, 1);
 }
 
-*{
+* {
   margin: 0;
 }
-body{
+body {
   background-color: var(--color_1);
   display: grid;
-  font-family: 'Assistant', sans-serif;
-  color: rgba(0, 0, 0, 0.9)
+  font-family: "Assistant", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
 }
 
-header{
+header {
   display: grid;
   grid-template-columns: 3fr 1fr;
   background-color: #04454d;
@@ -20,13 +20,13 @@ header{
   align-items: center;
 }
 
-nav{
+nav {
   display: grid;
   grid-template-columns: 40px 40px 40px;
   margin-left: 20px;
 }
 
-.icon{
+.icon {
   font-size: 20px;
   border-radius: 50%;
   color: var(--color_1);
@@ -35,71 +35,72 @@ nav{
   text-align: center;
 }
 
-.icon_2{
+.icon_2 {
   margin-left: 190px;
 }
 
-i.fa-solid{
+i.fa-solid {
   display: grid;
   align-items: center;
 }
 
-i.fa-plus{
-  background-color: rgb(79, 208, 99)
+i.fa-plus {
+  background-color: rgb(79, 208, 99);
 }
 
-i.fa-plus:hover{
+i.fa-plus:hover {
   height: 37px;
   width: 37px;
 }
 
-i.fa-bars:hover{
+i.fa-bars:hover {
   background-color: rgb(25, 93, 103);
 }
 
-i.fa-envelope:hover{
+i.fa-envelope:hover {
   background-color: rgb(25, 93, 103);
-} 
+}
 
-.container-homework{
+.container-homework {
   display: grid;
-  position:fixed;
+  position: fixed;
   z-index: 1;
   background-color: var(--color_1);
   height: 100px;
   width: 200px;
   margin-top: 150px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
   pointer-events: none;
   opacity: 0;
 }
 
-.homework-modal{
+.homework-modal {
   display: block;
   margin-left: 30px;
-  color: rgba(0,0,0,.9);
+  color: rgba(0, 0, 0, 0.9);
   font-size: 15px;
   font-weight: 400;
 }
 
-.close-container-homework{
+.close-container-homework {
   position: absolute;
   margin-left: 180px;
   margin-top: -40px;
 }
 
-.homework-item{
+.homework-item {
   height: 32px;
   display: grid;
   align-items: center;
   margin-top: 20px;
 }
 
-.homework-item:hover{
-  background-color: rgba(163,172,182,.2);
+.homework-item:hover {
+  background-color: rgba(163, 172, 182, 0.2);
 }
 
-.container-form{
+.container-form {
   display: grid;
   z-index: 1;
   top: 0;
@@ -109,51 +110,52 @@ i.fa-envelope:hover{
   height: 250px;
   width: 700px;
   margin: auto;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
   pointer-events: none;
   opacity: 0;
   background-color: var(--color_1);
   margin-top: -30px;
 }
 
-.modal-create-task{
+.modal-create-task {
   display: grid;
   grid-template-rows: 40px 40px 40px 40px;
   grid-column-gap: 20px;
 }
 
-.list-homework{
+.list-homework {
   width: 90%;
   height: 30px;
   border: none;
   font-size: 20px;
   font-family: inherit;
-  color: rgba(0,0,0,.9);
+  color: rgba(0, 0, 0, 0.9);
   margin-left: 20px;
   margin-top: 10px;
 }
 
-.label-form-1{
+.label-form-1 {
   margin-top: 20px;
   margin-left: 20px;
   height: 30px;
 }
 
-.label-form-2{
+.label-form-2 {
   margin-top: 10px;
   margin-left: 20px;
-  height: 30px; 
+  height: 30px;
 }
 
-.list-homework:hover{
+.list-homework:hover {
   border-bottom: 1px solid black;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.close-modal-create-t{
+.close-modal-create-t {
   font-size: 25px;
   color: black;
   font-weight: normal;
@@ -161,7 +163,7 @@ a{
   margin-left: 670px;
 }
 
-.send-form-button{
+.send-form-button {
   position: absolute;
   height: 30px;
   width: 60px;
@@ -169,41 +171,45 @@ a{
   top: 230px;
 }
 
-.modal-sectiones{
+.modal-sectiones {
   display: grid;
-  position:fixed;
+  position: fixed;
   background-color: var(--color_1);
   height: 150px;
   width: 200px;
   left: 50px;
   margin-top: 40px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
   grid-template-rows: 40px;
   pointer-events: none;
   opacity: 0;
 }
 
-.list-section{
+.list-section {
   display: block;
   margin: 35px;
-  font-family: 'Assistant', sans-serif;
-  color: rgba(0, 0, 0, 0.9)
+  font-family: "Assistant", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.close-modal-sections{
+.close-modal-sections {
   position: absolute;
   margin-left: 185px;
 }
 
-.close-container-homework:hover, .close-modal-create-t:hover, .close-modal-sections:hover, .close-modal-class:hover{
-  color: rgba(68,136,255,1);
+.close-container-homework:hover,
+.close-modal-create-t:hover,
+.close-modal-sections:hover,
+.close-modal-class:hover {
+  color: rgba(68, 136, 255, 1);
 }
 
-.show3{
+.show3 {
   z-index: 1;
 }
 
-.welcome-section{
+.welcome-section {
   display: grid;
   grid-template-rows: 200px;
   position: fixed;
@@ -212,13 +218,13 @@ a{
   width: 100%;
 }
 
-.title-section-welcome{
+.title-section-welcome {
   margin-top: 200px;
   font-size: 70px;
   text-align: center;
 }
 
-.welcom_form{
+.welcom_form {
   display: grid;
   width: 400px;
   margin: auto;
@@ -226,32 +232,33 @@ a{
   margin-top: 150px;
 }
 
-.input{
+.input {
   background-color: var(--color_1);
 }
 
-.send-name-button{
+.send-name-button {
   background-color: #04454d;
   color: var(--color_1);
   margin-top: 3px;
 }
 
-.form-control, .submit-button{
+.form-control,
+.submit-button {
   border-radius: 0.25rem;
 }
 
-.send-name-button:hover{
+.send-name-button:hover {
   background-color: rgb(25, 93, 103);
 }
 
-.add-name-to-sect-welcome{
+.add-name-to-sect-welcome {
   display: grid;
   pointer-events: none;
   margin-top: -600px;
-  opacity: 0; 
+  opacity: 0;
 }
 
-.name{
+.name {
   margin: auto;
   font-weight: 600;
   font-size: 30px;
@@ -259,10 +266,10 @@ a{
   margin-left: 600px;
 }
 
-.task-section{
+.task-section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  position:fixed;
+  position: fixed;
   background-color: var(--color_1);
   height: 100%;
   width: 1425px;
@@ -272,12 +279,12 @@ a{
   opacity: 0;
 }
 
-.title-task-status{
+.title-task-status {
   margin: 26px;
   font-size: 15px;
 }
 
-p{
+p {
   margin: 26px 0 0 26px;
   border-bottom: 1px solid grey;
   height: 30px;
@@ -287,7 +294,7 @@ p{
   text-overflow: ellipsis;
 }
 
-.description-and-task{
+.description-and-task {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -299,120 +306,45 @@ p{
   margin: auto;
   left: 354px;
   top: -40px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
   pointer-events: none;
   opacity: 0;
 }
 
-.description-class{
+.description-class {
   width: 90%;
   height: 70px;
   margin-left: 20px;
-  color: rgba(0, 0, 0, 0.9)
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.title-class{
+.title-class {
   margin-bottom: 30px;
 }
 
-.close-modal-class{
+.close-modal-class {
   margin-top: -120px;
   position: absolute;
   left: 680px;
 }
 
-.show, .show3{
+.show,
+.show3 {
   pointer-events: unset;
   opacity: 1;
 }
 
-.remove-form-welcome, .remove-modal{
+.remove-form-welcome {
   pointer-events: none;
   opacity: 0;
 }
 
 @media (min-width: 600px) {
- header{
-   width: 110%;
- }
- .welcome-section{
-  display: grid;
-  grid-template-rows: 200px;
-  position: fixed;
-  margin-top: 55px;
-  height: 1425px;
-  width: 100%;
-}
- .name{
-   margin-left: 410px;
- }
-
- .container-homework{
-    display: grid;
-    position:fixed;
-    z-index: 1;
-    background-color: var(--color_1);
-    height: 100px;
-    width: 200px;
-    left: 820px;
-    margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  header {
+    width: 110%;
   }
-
-  .container-form{
-    margin-left: 200px;
-    display: grid;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    height: 250px;
-    width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
-    background-color: var(--color_1);
-    margin-top: -30px;
-  }
-  .send-form-button{
-    position: absolute;
-    height: 30px;
-    width: 60px;
-    left: 800px;
-    top: 230px;
-  }
-
- .task-section {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  background-color: var(--color_1);
-  height: 100%;
-  width: 70%;
-  margin-top: 70px;
-  left: 17px;
-  }
-  .state-task {
-    display: flex;
-    flex-direction: column;
-    width: 1030px;
-    height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
-  }
-  p {
-    margin: 26px 0 0 26px;
-    border-bottom: 1px solid grey;
-    height: 30px;
-    width: 970px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-@media (min-width: 800px) {
-  header{
-   width: 110%;
-  }
-  .welcome-section{
+  .welcome-section {
     display: grid;
     grid-template-rows: 200px;
     position: fixed;
@@ -420,23 +352,24 @@ p{
     height: 1425px;
     width: 100%;
   }
-  .name{
+  .name {
     margin-left: 410px;
   }
 
-  .container-homework{
+  .container-homework {
     display: grid;
-    position:fixed;
+    position: fixed;
     z-index: 1;
     background-color: var(--color_1);
     height: 100px;
     width: 200px;
     left: 820px;
     margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
   }
 
-  .container-form{
+  .container-form {
     margin-left: 200px;
     display: grid;
     z-index: 1;
@@ -445,11 +378,12 @@ p{
     right: 0;
     height: 250px;
     width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
     background-color: var(--color_1);
     margin-top: -30px;
   }
-  .send-form-button{
+  .send-form-button {
     position: absolute;
     height: 30px;
     width: 60px;
@@ -472,7 +406,88 @@ p{
     flex-direction: column;
     width: 1030px;
     height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
+    box-shadow: 0 10px 20px rgb(163 172 182 / 50%),
+      0 6px 6px rgb(163 172 182 / 50%);
+  }
+  p {
+    margin: 26px 0 0 26px;
+    border-bottom: 1px solid grey;
+    height: 30px;
+    width: 970px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (min-width: 800px) {
+  header {
+    width: 110%;
+  }
+  .welcome-section {
+    display: grid;
+    grid-template-rows: 200px;
+    position: fixed;
+    margin-top: 55px;
+    height: 1425px;
+    width: 100%;
+  }
+  .name {
+    margin-left: 410px;
+  }
+
+  .container-homework {
+    display: grid;
+    position: fixed;
+    z-index: 1;
+    background-color: var(--color_1);
+    height: 100px;
+    width: 200px;
+    left: 820px;
+    margin-top: 150px;
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
+  }
+
+  .container-form {
+    margin-left: 200px;
+    display: grid;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 250px;
+    width: 700px;
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
+    background-color: var(--color_1);
+    margin-top: -30px;
+  }
+  .send-form-button {
+    position: absolute;
+    height: 30px;
+    width: 60px;
+    left: 800px;
+    top: 230px;
+  }
+
+  .task-section {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: var(--color_1);
+    height: 100%;
+    width: 70%;
+    margin-top: 70px;
+    left: 17px;
+  }
+  .state-task {
+    display: flex;
+    flex-direction: column;
+    width: 1030px;
+    height: 100%;
+    box-shadow: 0 10px 20px rgb(163 172 182 / 50%),
+      0 6px 6px rgb(163 172 182 / 50%);
   }
   p {
     margin: 26px 0 0 26px;
@@ -486,10 +501,10 @@ p{
 }
 
 @media (min-width: 1400px) {
-  header{
+  header {
     width: 110%;
   }
-  .welcome-section{
+  .welcome-section {
     display: grid;
     grid-template-rows: 200px;
     position: fixed;
@@ -497,23 +512,24 @@ p{
     height: 1425px;
     width: 100%;
   }
-  .name{
+  .name {
     margin-left: 600px;
   }
 
-  .container-homework{
+  .container-homework {
     display: grid;
-    position:fixed;
+    position: fixed;
     z-index: 1;
     background-color: var(--color_1);
     height: 100px;
     width: 200px;
     left: 1180px;
     margin-top: 150px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
   }
 
-  .container-form{
+  .container-form {
     margin-left: 350px;
     display: grid;
     z-index: 1;
@@ -522,11 +538,12 @@ p{
     right: 0;
     height: 250px;
     width: 700px;
-    box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+    box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+      0 6px 6px rgba(163, 172, 182, 0.5);
     background-color: var(--color_1);
     margin-top: -30px;
   }
-  .send-form-button{
+  .send-form-button {
     position: absolute;
     height: 30px;
     width: 60px;
@@ -534,24 +551,24 @@ p{
     top: 230px;
   }
 
-  .task-section{
+  .task-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    position:fixed;
+    position: fixed;
     background-color: var(--color_1);
     height: 100%;
     width: 1425px;
     margin-top: 70px;
     left: 17px;
-   
   }
- 
+
   .state-task {
     display: flex;
     flex-direction: column;
     width: 450px;
     height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
+    box-shadow: 0 10px 20px rgb(163 172 182 / 50%),
+      0 6px 6px rgb(163 172 182 / 50%);
   }
 
   p {
