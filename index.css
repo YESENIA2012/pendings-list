@@ -1,18 +1,18 @@
-:root{
-  --color_1: rgba(254,254,255,1)
+:root {
+  --color_1: rgba(254, 254, 255, 1);
 }
 
-*{
+* {
   margin: 0;
 }
-body{
+body {
   background-color: var(--color_1);
   display: grid;
-  font-family: 'Assistant', sans-serif;
-  color: rgba(0, 0, 0, 0.9)
+  font-family: "Assistant", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
 }
 
-header{
+header {
   display: grid;
   grid-template-columns: 3fr 1fr;
   background-color: #04454d;
@@ -20,13 +20,13 @@ header{
   align-items: center;
 }
 
-nav{
+nav {
   display: grid;
   grid-template-columns: 40px 40px 40px;
   margin-left: 20px;
 }
 
-.icon{
+.icon {
   font-size: 20px;
   border-radius: 50%;
   color: var(--color_1);
@@ -35,113 +35,114 @@ nav{
   text-align: center;
 }
 
-.plusIcon{
+.plusIcon {
   margin-left: 190px;
 }
 
-i.fa-solid{
+i.fa-solid {
   display: grid;
   align-items: center;
 }
 
-i.fa-plus{
-  background-color: rgb(79, 208, 99)
+i.fa-plus {
+  background-color: rgb(79, 208, 99);
 }
 
-i.fa-plus:hover{
+i.fa-plus:hover {
   height: 37px;
   width: 37px;
 }
 
-i.fa-bars:hover{
+i.fa-bars:hover {
   background-color: rgb(25, 93, 103);
 }
 
-i.fa-envelope:hover{
+i.fa-envelope:hover {
   background-color: rgb(25, 93, 103);
-} 
+}
 
-.container-homework{
-  position:fixed;
+.container-homework {
+  position: fixed;
   z-index: 1;
   background-color: var(--color_1);
   height: 100px;
   width: 200px;
   margin-top: 150px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
 }
 
-.homework-modal{
-  display: block;
-  margin-left: 30px;
-  color: rgba(0,0,0,.9);
+.homework-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 70px;
+}
+
+.close-container-homework {
+  margin-left: 180px;
+  cursor: pointer;
+}
+
+.homework-modal {
+  padding-left: 30px;
+  color: rgba(0, 0, 0, 0.9);
   font-size: 15px;
   font-weight: 400;
+  cursor: pointer;
 }
 
-.close-container-homework{
-  position: absolute;
-  margin-left: 180px;
-  margin-top: -40px;
+.homework-modal:hover {
+  background-color: rgba(163, 172, 182, 0.2);
 }
 
-.homework-item{
-  height: 32px;
-  display: grid;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.homework-item:hover{
-  background-color: rgba(163,172,182,.2);
-}
-
-.container-form{
+.container-form {
   z-index: 1;
   height: 250px;
   width: 700px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
   background-color: var(--color_1);
   margin-top: -30px;
 }
 
-.modal-create-task{
+.modal-create-task {
   display: grid;
   grid-template-rows: 40px 40px 40px 40px;
   grid-column-gap: 20px;
 }
 
-.activity{
+.activity {
   width: 90%;
   height: 30px;
   font-size: 20px;
   font-family: inherit;
-  color: rgba(0,0,0,.9);
+  color: rgba(0, 0, 0, 0.9);
   margin-left: 20px;
   margin-top: 10px;
 }
 
-.label-form-1{
+.label-form-1 {
   margin-top: 20px;
   margin-left: 20px;
   height: 30px;
 }
 
-.label-form-2{
+.label-form-2 {
   margin-top: 10px;
   margin-left: 20px;
-  height: 30px; 
+  height: 30px;
 }
 
-.activity:hover{
+.activity:hover {
   border-bottom: 1px solid black;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.close-containerForm{
+.close-containerForm {
   font-size: 25px;
   color: black;
   font-weight: normal;
@@ -149,60 +150,64 @@ a{
   margin-left: 670px;
 }
 
-.send-form-button{
+.send-form-button {
   position: absolute;
   height: 30px;
   width: 60px;
   top: 230px;
 }
 
-.modalSections{
+.modalSections {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   z-index: 1;
-  position:fixed;
+  position: fixed;
   background-color: var(--color_1);
   height: 100px;
   width: 200px;
   left: 50px;
   margin-top: 40px;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
 }
 
-.list-section{
-  font-family: 'Assistant', sans-serif;
-  color: rgba(0, 0, 0, 0.9) 
+.list-section {
+  font-family: "Assistant", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.list-section:hover{
-  background-color: rgba(163,172,182,.2);
+.list-section:hover {
+  background-color: rgba(163, 172, 182, 0.2);
 }
 
-.close-sections{
+.close-sections {
   position: absolute;
   margin-left: 185px;
   bottom: 80px;
 }
 
-.close-container-homework:hover, .close-containerForm:hover, .close-sections:hover, .close-modal-class:hover{
-  color: rgba(68,136,255,1);
+.close-container-homework:hover,
+.close-containerForm:hover,
+.close-sections:hover,
+.close-modal-class:hover {
+  color: rgba(68, 136, 255, 1);
 }
 
-.welcome-section{
+.welcome-section {
   position: fixed;
   width: 100%;
   margin-top: 60px;
 }
 
-.title-section-welcome{
+.title-section-welcome {
   margin-top: 200px;
   font-size: 70px;
   text-align: center;
 }
 
-.welcom-form{
+.welcom-form {
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -210,58 +215,60 @@ a{
   margin-top: 80px;
 }
 
-.input{
+.input {
   background-color: var(--color_1);
 }
 
-.send-name-button{
+.send-name-button {
   background-color: #04454d;
   color: var(--color_1);
   margin-top: 3px;
 }
 
-.form-control, .submit-button{
+.form-control,
+.submit-button {
   border-radius: 0.25rem;
 }
 
-.send-name-button:hover{
+.send-name-button:hover {
   background-color: rgb(25, 93, 103);
 }
 
-.addName-to-sectionWelcome{
+.addName-to-sectionWelcome {
   display: flex;
   margin-top: -100px;
 }
 
-.name{
+.name {
   margin: auto;
   font-weight: 600;
   font-size: 30px;
 }
 
-.task-section{
+.task-section {
   display: flex;
-  position:fixed;
+  position: fixed;
   background-color: var(--color_1);
   height: 100%;
   margin-top: 70px;
   left: 17px;
 }
 
-.title-task-status{
+.title-task-status {
   margin: 26px;
   font-size: 15px;
 }
 
-p{
+p {
   margin: 26px 0 0 26px;
   border-bottom: 1px solid grey;
   height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 
-.description-and-task{
+.description-and-task {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,60 +282,63 @@ p{
   top: -40px;
   pointer-events: none;
   opacity: 0;
-  box-shadow: 0 10px 20px rgba(163,172,182,0.5), 0 6px 6px rgba(163,172,182,0.5);
+  box-shadow: 0 10px 20px rgba(163, 172, 182, 0.5),
+    0 6px 6px rgba(163, 172, 182, 0.5);
 }
 
-.description-class{
+.description-class {
   width: 90%;
   height: 70px;
   font-size: 20px;
   font-family: inherit;
   margin-left: 20px;
-  color: rgba(0, 0, 0, 0.9)
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.title-class{
+.title-class {
   margin-bottom: 30px;
 }
 
-.close-modal-class{
+.close-modal-class {
   margin-top: -120px;
   position: absolute;
   left: 680px;
+  cursor: pointer;
 }
 
-.hide{
+.hide {
   pointer-events: none;
   opacity: 0;
 }
 
-.show{
+.show {
   pointer-events: unset;
   opacity: 1;
 }
 
-.remove-form-welcome, .remove-modal{
+.remove-form-welcome {
   pointer-events: none;
   opacity: 0;
 }
 
 @media (min-width: 600px) {
- header{
-   width: 110%;
- }
+  header {
+    width: 110%;
+  }
 
-  .container-form{
+  .container-form {
     margin-left: 200px;
   }
 
-  .send-form-button{
+  .send-form-button {
     left: 800px;
   }
 
   .state-task {
     width: 1030px;
     height: 100%;
-    box-shadow: 0 10px 20px rgb(163 172 182 / 50%), 0 6px 6px rgb(163 172 182 / 50%);
+    box-shadow: 0 10px 20px rgb(163 172 182 / 50%),
+      0 6px 6px rgb(163 172 182 / 50%);
   }
 
   p {
@@ -337,11 +347,11 @@ p{
 }
 
 @media (min-width: 800px) {
-  header{
-   width: 110%;
+  header {
+    width: 110%;
   }
 
-  .container-homework{
+  .container-homework {
     left: 820px;
   }
 
@@ -351,7 +361,7 @@ p{
 }
 
 @media (min-width: 1400px) {
-  header{
+  header {
     width: 100%;
   }
 
@@ -359,23 +369,23 @@ p{
     margin-left: 270px;
   }
 
-  .container-homework{
+  .container-homework {
     left: 1180px;
   }
 
-  .container-form{
+  .container-form {
     margin-left: 350px;
   }
-  .send-form-button{
+  .send-form-button {
     left: 950px;
   }
 
-  .task-section{
+  .task-section {
     flex-direction: row;
     justify-content: space-around;
     width: 98%;
   }
- 
+
   .state-task {
     width: 450px;
   }

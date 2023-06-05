@@ -2,46 +2,84 @@
 <html>
   <head>
     <title>Lista de tareas</title>
-    <meta charset="uft-8">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="uft-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
     <header>
       <nav>
-        <a href="#modalSections" class="barsIcon"><i class="icon fa-solid fa-bars"></i></a>
+        <a href="#modalSections" class="barsIcon"
+          ><i class="icon fa-solid fa-bars"></i
+        ></a>
       </nav>
-      <a href="#container-homework"><i class="icon plusIcon fa-solid fa-plus"></i></a>
+      <a href="#container-homework"
+        ><i class="icon plusIcon fa-solid fa-plus"></i
+      ></a>
       <div class="container-homework hide">
         <div class="homework-item">
-          <a href="#container-form" class="homework-modal">Homework</a>
           <a class="close-container-homework">x</a>
+          <a href="#container-form" class="homework-modal">Homework</a>
         </div>
       </div>
     </header>
     <div class="container-form hide">
       <form class="modal-create-task">
-        <label for="activity" class="label-form-1">Enter the name of the new task</label>
-        <textarea name="task-title" class="activity" maxlength="1000" minlength="1" required></textarea>
-        <label for="description" class="label-form-2">Enter your task description</label>
-        <textarea name="task-description" class="description-class" maxlength="1000" minlength="1" required></textarea>
+        <label for="activity" class="label-form-1"
+          >Enter the name of the new task</label
+        >
+        <textarea
+          name="task-title"
+          class="activity"
+          maxlength="1000"
+          minlength="1"
+          required
+        ></textarea>
+        <label for="description" class="label-form-2"
+          >Enter your task description</label
+        >
+        <textarea
+          name="task-description"
+          class="description-class"
+          maxlength="1000"
+          minlength="1"
+          required
+        ></textarea>
         <a class="close-containerForm">x</a>
         <button type="submit" class="send-form-button">Enviar</button>
       </form>
     </div>
     <section class="modalSections hide">
       <a class="close-sections">x</a>
-      <a href="#welcomeSection" class="list-section itemWelcome">Welcome Section</a>
-      <a href="#taskProgressSection" class="list-section itemTaskProgress">Task Progress</a>
+      <a href="#welcomeSection" class="list-section itemWelcome"
+        >Welcome Section</a
+      >
+      <a href="#taskProgressSection" class="list-section itemTaskProgress"
+        >Task Progress</a
+      >
     </section>
     <section class="welcome-section">
       <h1 class="title-section-welcome">Welcome</h1>
       <form class="welcom-form">
         <label for="name">What's your name ?</label>
-        <input type="text" name="name" id="name" placeholder="Enter your name" required/>
-        <button type="submit" id="submit" class="send-name-button">Submit</button>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+          required
+        />
+        <button type="submit" id="submit" class="send-name-button">
+          Submit
+        </button>
       </form>
       <div class="addName-to-sectionWelcome hide">
         <div class="name"></div>
@@ -50,16 +88,17 @@
     <section class="task-section hide">
       <div id="todocolumn" class="state-task state-new">
         <h1 class="title-task-status">New</h1>
-        <div class="newTask"></div>
+        <div class="new-task-container"></div>
       </div>
       <div class="state-task state-inprogress">
         <h1 class="title-task-status">In Progress</h1>
+        <div class="in-progress-container"></div>
       </div>
       <div class="state-task state-completed">
-        <h1 class="title-task-status">Completed</h1> 
-        </div>
+        <h1 class="title-task-status">Completed</h1>
+        <div class="completed-container"></div>
+      </div>
     </section>
     <script src="index.js"></script>
   </body>
 </html>
-
