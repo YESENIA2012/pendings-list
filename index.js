@@ -24,28 +24,40 @@ const createElementWithClass = (tagName, className) => {
   return element;
 };
 
-// Utilidad: Crear nodo de texto
 const createTextNodeFunction = (text) => {
   return document.createTextNode(text);
 };
 
-const saveInformation = (activity, description, state) => {
-  const currentTasks = JSON.parse(localStorage.getItem("responsibilities"));
-  let taskCounter = currentTasks ? currentTasks.length : 0;
-  item = {
-    title: activity,
-    description: description,
-    state: state,
-    id: taskCounter,
-  };
+const createTask = async (taskData) => {
+  try {
+    const response = await fetch("http://localhost:4000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
+    });
 
-  addTasktoContainer([item]);
+    const createdTask = await response.json();
+    console.log("Task created:", createdTask);
+    return createdTask;
+  } catch (error) {
+    console.error("Error creating task:", error);
+    return { error: true };
+  }
+};
 
-  if (!currentTasks) {
-    localStorage.setItem("responsibilities", JSON.stringify([item]));
-  } else {
-    currentTasks.push(item);
-    localStorage.setItem("responsibilities", JSON.stringify(currentTasks));
+const getTasks = async () => {
+  try {
+    const response = await fetch("http://localhost:4000/tasks");
+    if (!response.ok) {
+      throw new Error("Error fetching tasks");
+    }
+    const tasks = await response.json();
+    console.log("Tasks:", tasks);
+    return tasks;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
   }
 };
 
@@ -139,6 +151,28 @@ const drawTaskOnPage = (
   index
 ) => {
   arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
+  arrayActivitys.forEach((item) => {
+    if (item.id == index) {
+      if (item.state == "state-new") {
+        newTask.appendChild(taskElement);
+      }
+      if (item.state == "state-inprogress") {
+        inProgressColumn.appendChild(taskElement);
+      }
+      if (item.state == "state-completed") {
+        completeColumn.appendChild(taskElement);
+      }
+    }
+  });
+};
+
+const drawTaskOnPageServer = async (
+  inProgressColumn,
+  completeColumn,
+  taskElement,
+  index
+) => {
+  arrayActivitys = await getTasks();
   arrayActivitys.forEach((item) => {
     if (item.id == index) {
       if (item.state == "state-new") {
@@ -268,16 +302,33 @@ document.querySelector(".close-containerForm").addEventListener("click", () => {
   insertTaskForm.classList.add("hide");
 });
 
-document.querySelector(".send-form-button").addEventListener("click", (e) => {
-  e.preventDefault();
-  let activity = document.querySelector("[name=task-title]").value;
-  let description = document.querySelector("[name=task-description]").value;
-  saveInformation(activity, description, "state-new");
-  document.querySelector("[name=task-title").value = " ";
-  document.querySelector("[name=task-description").value = " ";
-  insertTaskForm.classList.remove("show");
-  insertTaskForm.classList.add("hide");
-});
+document
+  .querySelector(".send-form-button")
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+    let activity = document.querySelector("[name=task-title]").value;
+    let description = document.querySelector("[name=task-description]").value;
+
+    document.querySelector("[name=task-title").value = " ";
+    document.querySelector("[name=task-description").value = " ";
+    insertTaskForm.classList.remove("show");
+    insertTaskForm.classList.add("hide");
+
+    const taskData = {
+      title: activity,
+      description: description,
+      status: "state-new",
+    };
+
+    const result = await createTask(taskData);
+    console.log(" result ", result);
+    if (result.error) {
+      console.log("paila hubo error en request");
+    } else {
+      const taskCopy = { ...result, state: result.status };
+      addTasktoContainer([taskCopy]);
+    }
+  });
 
 document.querySelector(".barsIcon").addEventListener("click", (e) => {
   seeSections.classList.add("show");
