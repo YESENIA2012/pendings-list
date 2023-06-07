@@ -28,7 +28,20 @@ const createTextNodeFunction = (text) => {
   return document.createTextNode(text);
 };
 
-const createTask = async (taskData) => {
+const getTasks = async () => {
+  try {
+    const response = await fetch("http://localhost:4000/tasks");
+
+    const tasks = await response.json();
+    console.log("Tasks:", tasks);
+    return tasks;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    return { error: true };
+  }
+};
+
+const createTaskInDB = async (taskData) => {
   try {
     const response = await fetch("http://localhost:4000/tasks", {
       method: "POST",
@@ -47,25 +60,33 @@ const createTask = async (taskData) => {
   }
 };
 
-const getTasks = async () => {
+const updateTaskInDB = async (url, taskData) => {
   try {
-    const response = await fetch("http://localhost:4000/tasks");
-    if (!response.ok) {
-      throw new Error("Error fetching tasks");
-    }
-    const tasks = await response.json();
-    console.log("Tasks:", tasks);
-    return tasks;
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
+    });
+
+    const taskUpdate = await response.json;
+    console.log("Task update: ", taskUpdate);
+    return taskUpdate;
   } catch (error) {
-    console.error("Error fetching tasks:", error);
+    console.log("error: ", error);
+    return { error: true };
   }
 };
 
-const addTasktoContainer = (arrayActivitys) => {
-  arrayActivitys.forEach(({ title, description, state }, index) => {
+const addTaskToContainer = (arrayActivitys) => {
+  arrayActivitys.forEach(({ id, title, description, state }) => {
     let textTarea = createTextNodeFunction(title);
     let textDescription = createTextNodeFunction(description);
-    let taskElement = createElementWithClass("p", `task-${index}`);
+    let taskElement = createElementWithClass("p", `task-${id}`);
+
+    // Agregar el icono de basura al elemento principal
+    taskElement.appendChild(trashIcon);
 
     taskElement.draggable = "true";
     taskElement.innerHTML = title;
@@ -115,9 +136,10 @@ function dragAndDropTask(task, columnContainer, taskContainer) {
 
   task.addEventListener("dragstart", (e) => {
     evento = e.target;
+    console.log(evento);
   });
 
-  columnContainer.addEventListener("drop", (e) => {
+  columnContainer.addEventListener("drop", async (e) => {
     e.preventDefault();
     let stateActivity = e.target;
     let stateAttribute = stateActivity.getAttribute("class");
@@ -129,22 +151,20 @@ function dragAndDropTask(task, columnContainer, taskContainer) {
       let position = taskClass.split("-");
       let taskId = position[1];
 
-      arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
-      arrayActivitys.map((item) => {
+      //revisar estos cambios porfis
+      let arrayActivitys = await getTasks();
+      arrayActivitys.map(async (item) => {
         if (taskId == item.id) {
           taskContainer.appendChild(evento);
           item.state = state;
-          localStorage.setItem(
-            "responsibilities",
-            JSON.stringify(arrayActivitys)
-          );
+          await updateTaskInDB(`http://localhost:4000/tasks/${item.id}`, item);
         }
       });
     }
   });
 }
 
-const drawTaskOnPage = (
+/* const drawTaskOnPage = (
   inProgressColumn,
   completeColumn,
   taskElement,
@@ -186,7 +206,7 @@ const drawTaskOnPageServer = async (
       }
     }
   });
-};
+}; */
 
 const removeIdenticalChildrenInproressColumn = (inProgressColumn) => {
   let childrenInprogressColumn = inProgressColumn.children;
@@ -317,16 +337,14 @@ document
     const taskData = {
       title: activity,
       description: description,
-      status: "state-new",
+      state: "state-new",
     };
 
-    const result = await createTask(taskData);
-    console.log(" result ", result);
+    const result = await createTaskInDB(taskData);
     if (result.error) {
-      console.log("paila hubo error en request");
+      return;
     } else {
-      const taskCopy = { ...result, state: result.status };
-      addTasktoContainer([taskCopy]);
+      addTaskToContainer([result]);
     }
   });
 
@@ -368,12 +386,14 @@ document
     modalWork.classList.add("hide");
   });
 
-document.addEventListener("DOMContentLoaded", function () {
-  arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
-  if (!arrayActivitys) {
+document.addEventListener("DOMContentLoaded", async function () {
+  const tasks = await getTasks();
+
+  if (tasks.error) {
     return;
+  } else {
+    addTaskToContainer(tasks);
   }
-  addTasktoContainer(arrayActivitys);
 });
 
 document.addEventListener("DOMContentLoaded", addNameFunc);

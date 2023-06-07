@@ -321,6 +321,10 @@ p {
   opacity: 0;
 }
 
+.state-task {
+  overflow: auto;
+}
+
 @media (min-width: 600px) {
   header {
     width: 110%;
