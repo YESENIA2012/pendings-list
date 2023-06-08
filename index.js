@@ -70,7 +70,7 @@ const updateTaskInDB = async (url, taskData) => {
       body: JSON.stringify(taskData),
     });
 
-    const taskUpdate = await response.json;
+    const taskUpdate = await response.json();
     console.log("Task update: ", taskUpdate);
     return taskUpdate;
   } catch (error) {
@@ -79,23 +79,50 @@ const updateTaskInDB = async (url, taskData) => {
   }
 };
 
+const deleteTaskInDB = async (url) => {
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const taskDeleted = await response;
+    console.log("Task delete: ", taskDeleted);
+    const updatedTasks = await getTasks();
+    return updatedTasks;
+  } catch (error) {
+    console.log("error: ", error);
+    return { error: true };
+  }
+};
+
+const clearTaskContainers = () => {
+  newTaskContainer.innerHTML = "";
+  inprogressTaskContainer.innerHTML = "";
+  completedTaskContainer.innerHTML = "";
+};
+
 const addTaskToContainer = (arrayActivitys) => {
   arrayActivitys.forEach(({ id, title, description, state }) => {
     let textTarea = createTextNodeFunction(title);
     let textDescription = createTextNodeFunction(description);
     let taskElement = createElementWithClass("p", `task-${id}`);
-
-    // Agregar el icono de basura al elemento principal
-    taskElement.appendChild(trashIcon);
+    const trashIcon = document.createElement("i");
+    trashIcon.classList.add(`${id}`, "fa-solid", "fa-trash");
 
     taskElement.draggable = "true";
     taskElement.innerHTML = title;
 
     if (state === "state-new") {
+      taskElement.appendChild(trashIcon);
       newTaskContainer.appendChild(taskElement);
     } else if (state === "state-inprogress") {
+      taskElement.appendChild(trashIcon);
       inprogressTaskContainer.appendChild(taskElement);
     } else {
+      taskElement.appendChild(trashIcon);
       completedTaskContainer.appendChild(taskElement);
     }
 
@@ -119,6 +146,17 @@ const addTaskToContainer = (arrayActivitys) => {
     taskElement.addEventListener("click", () => {
       descriptionAndTasContainer.classList.add("show");
     });
+
+    trashIcon.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      const classNameTrashIcon = e.target.getAttribute("class").split(" ");
+      const idTaskToDelete = parseInt(classNameTrashIcon[0]);
+      const tasksUpdates = await deleteTaskInDB(
+        `http://localhost:4000/tasks/${idTaskToDelete}`
+      );
+      clearTaskContainers();
+      addTaskToContainer(tasksUpdates);
+    });
   });
 };
 
@@ -136,7 +174,6 @@ function dragAndDropTask(task, columnContainer, taskContainer) {
 
   task.addEventListener("dragstart", (e) => {
     evento = e.target;
-    console.log(evento);
   });
 
   columnContainer.addEventListener("drop", async (e) => {
@@ -163,92 +200,6 @@ function dragAndDropTask(task, columnContainer, taskContainer) {
     }
   });
 }
-
-/* const drawTaskOnPage = (
-  inProgressColumn,
-  completeColumn,
-  taskElement,
-  index
-) => {
-  arrayActivitys = JSON.parse(localStorage.getItem("responsibilities"));
-  arrayActivitys.forEach((item) => {
-    if (item.id == index) {
-      if (item.state == "state-new") {
-        newTask.appendChild(taskElement);
-      }
-      if (item.state == "state-inprogress") {
-        inProgressColumn.appendChild(taskElement);
-      }
-      if (item.state == "state-completed") {
-        completeColumn.appendChild(taskElement);
-      }
-    }
-  });
-};
-
-const drawTaskOnPageServer = async (
-  inProgressColumn,
-  completeColumn,
-  taskElement,
-  index
-) => {
-  arrayActivitys = await getTasks();
-  arrayActivitys.forEach((item) => {
-    if (item.id == index) {
-      if (item.state == "state-new") {
-        newTask.appendChild(taskElement);
-      }
-      if (item.state == "state-inprogress") {
-        inProgressColumn.appendChild(taskElement);
-      }
-      if (item.state == "state-completed") {
-        completeColumn.appendChild(taskElement);
-      }
-    }
-  });
-}; */
-
-const removeIdenticalChildrenInproressColumn = (inProgressColumn) => {
-  let childrenInprogressColumn = inProgressColumn.children;
-  let element = childrenInprogressColumn[1];
-
-  for (
-    let counter = 1;
-    counter < childrenInprogressColumn.length * 2;
-    counter++
-  ) {
-    let element2 = childrenInprogressColumn[counter + 1];
-
-    if (element2 == undefined || element == undefined) {
-      return;
-    }
-
-    if (element.className == element2.className) {
-      inProgressColumn.removeChild(element);
-    }
-  }
-};
-
-const removeIdenticalChildrenCompletedColumn = (completeColumn) => {
-  let childrenInCompletedColumn = completeColumn.children;
-  let element = childrenInCompletedColumn[1];
-
-  for (
-    let counter = 1;
-    counter < childrenInCompletedColumn.length * 2;
-    counter++
-  ) {
-    let element2 = childrenInCompletedColumn[counter + 1];
-
-    if (element2 == undefined || element == undefined) {
-      return;
-    }
-
-    if (element.className == element2.className) {
-      completeColumn.removeChild(element);
-    }
-  }
-};
 
 const addNameFunc = () => {
   const myNameDiv = document.querySelector(".name");
